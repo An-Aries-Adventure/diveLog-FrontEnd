@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import Navigation from './Navigation'
 
 
@@ -10,7 +10,7 @@ function ProfilePage(props) {
     const fetchData = useCallback(() => {
 
 
-        Axios({
+        axios({
             "method": "GET",
             "url": "http://localhost:5000/api/users/" + props.userInfo._id
         }).then((response) => {
@@ -41,7 +41,7 @@ function ProfilePage(props) {
 
     const setProfileImage = (event) => {
 
-        Axios.put('http://localhost:5000/api/users/updateImage', {
+        axios.put('http://localhost:5000/api/users/updateImage', {
             "id": props.userInfo._id,
             "profileImage": event.target.value
         })
@@ -63,8 +63,8 @@ function ProfilePage(props) {
             <div className="container dark-red1" style={{ marginTop: "50px" }}>
 
                 <div className="row">
-                    <div class="col-md-6 img">
-                        <img src={responseData.profileImage} alt="" class="img-rounded" />
+                    <div className="col-md-6 img">
+                        <img src={responseData.profileImage} alt="" className ="img-rounded" />
                     </div>
                     <div className="col-md-6 details">
                         <blockquote>

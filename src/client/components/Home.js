@@ -10,14 +10,15 @@ const Home = props => {
         <div className="row" style={{ paddingTop: "50px" }}>
           <div className="col-lg-3">
             <div className="text-center ">
-              <img src={'/src/client/assets/images/mandalorian.jpg'} alt="John Doe" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} />
+              <img src={'/src/client/components/images/dolphin.jpg'} alt="dolphin" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} />
             </div>
             <div >
               <div className="text-center dark-red" style={{ width: "18rem", margin: "0 auto", paddingTop: "10px", marginBottom: "30px" }}>
                 <img className="card-img-top" src={props.userInfo.profileImage} alt="Card image cap" style={{ width: "80px" }} />
                 <div className="card-body">
                   <h5 className="card-title">Profile</h5>
-                  <p className="card-text">{props.userInfo.firstName} {props.userInfo.lastName}</p>
+                  <p className="card-text">{props.userInfo.firstName}</p>
+                  <p className="card-text">{props.userInfo.lastName}</p>
                   <p className="card-text">{props.userInfo.email}</p>
                   <a href="/ProfilePage"><button className="btn-danger btn">View Profile</button></a>
 

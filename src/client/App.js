@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Router, Route, useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-const jwtDecode = require('jwt-decode');
+import jwtDecode from 'jwt-decode';
 
 import './app.css';
 import LandingPage from './components/LandingPage';
@@ -29,9 +29,10 @@ function App() {
       //jwtDecode just grabs the token. It does not validate the token.
       //userInfo will hold the user info in an object. If no jwt found, userInfo will hold the false value.
       userInfo = jwtDecode(cookies.diveLog);
-    } catch {
+    } catch(err) {
       //if token is not found, send user to landing page.
-      history.push("/");
+      console.log("error", err);
+      history.push("/home");
     }
   }
 
@@ -41,27 +42,30 @@ function App() {
 
 
   const handleLogin = e => {
+    console.log("handle login event", e);
     e.preventDefault();
-
+    //e.persist();
+   
     try {
       //jwtDecode just grabs the token. It does not validate the token.
       //userInfo will hold the user info in an object. If no jwt found, userInfo will hold the false value.
+      console.log('c',cookies);
       userInfo = jwtDecode(cookies.diveLog);
       setUser(userInfo);
-
-      history.push("/home");
+      //if user is found, send to home component
+      history.push("/Home");
       window.location.reload(false);
-    } catch {
+    } catch(err) {
       //if token is not found, send user to landing page.
+      console.log("login error", err);
       history.push("/");
     }
-    //if user is found, send to home component
-
-
+   
   }
 
   const handleLogout = e => {
-    e.preventDefault();
+    e.preventDefault()
+    // e.persist();
 
     //if user logs out, set user to false and remove cookie
     setUser(false);
@@ -81,7 +85,6 @@ function App() {
         <ProtectedRoute exact path='/Home' user={user} component={Home} handleLogout={handleLogout} />
         <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} handleLogout={handleLogout}/>
       </Router>
-      
     </div>
   );
 }
