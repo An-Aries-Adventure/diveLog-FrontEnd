@@ -47,6 +47,12 @@ export default class NewDiveRecord extends React.Component{
         };
 
     }
+        checkHandler = (e) => {
+            this.setState({
+                [e.target.name]: true
+            })
+        }
+
         diveLogHandler = (e) => {
             this.setState({
                 [e.target.name]: e.target.value
@@ -57,6 +63,7 @@ export default class NewDiveRecord extends React.Component{
             e.preventDefault();
             axios.post('http://localhost:5000/api/diveRecord/', {
 
+            userId: props.userInfo._id,
             diveNumber: this.state.diveNumber,
             date: this.state.date,
             diveSite: this.state.diveSite, 
@@ -102,24 +109,93 @@ export default class NewDiveRecord extends React.Component{
             return (
                 <div>
                     <Navigation/>
+                    <Container>
                     <form id="diveForm">
                         <FormGroup>
                             <div>
                                 <Label>Create New Dive Record</Label>
                             </div>
                             <div>
-                                <Input type = 'text' placeholder ="Date of the dive: mm/dd/yyyy" onChange={this.diveLogHandler}/>
-                                <Input type = 'text' placeholder ="Name of dive site"onChange={this.diveLogHandler}/>
-                                <Input type = 'text' id = 'city' placeholder ="City of Dive Location"onChange={this.diveLogHandler}/>
-                                <Input type = 'text' id = 'country' placeholder ="Country of Dive Location"onChange={this.diveLogHandler}/>
+                                <Row>
+                                <Input type = 'text' name = "diveNumber" placeholder ="Dive Number" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "date" placeholder ="Date of the dive: mm/dd/yyyy" onChange={this.diveLogHandler}/>
+                                </Row>
+                                <Row>
+                                <Input type = 'text' name = "diveSite" placeholder ="Name of dive site"onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "city" id = 'city'  placeholder ="City of Dive Location"onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "counry" id = 'country'  placeholder ="Country of Dive Location"onChange={this.diveLogHandler}/>
+                                </Row>
                             </div>
                             <div>
-
+                                <Row>
+                                <Input type = 'text' name = "timeIn" placeholder = "Time entered the water" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "timeOut" placeholder = "Time you exited the water" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "totalDiveMin" placeholder = "Dive time in minutes" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "minAtDepth" placeholder = "Time at depth" onChange={this.diveLogHandler}/>
+                                </Row>
                             </div>
-                            <Input rows="7" type="textarea" name="text" id="postText" placeholder="Open space to write anything you want about your dive" onChange={this.diveLogHandler} />
+                            <div>
+                                <Row>
+                                <Input type = 'text' name = "startingPressure" placeholder = "Staring pressure in PSI" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "endingPressure" placeholder = "Ending Presure in PSI" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = 'airConsumption' placeholder = "Air Consuption" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "maxDepth" placeholder = "Max Depth of this Dive" onChange={this.diveLogHandler}/>
+                                </Row>
+                            </div>
+                            <div>
+                                <Row>
+                                <Input type = 'text' name = "weight" placeholder = "How much weight did you use in lbs" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "cylinderSize" placeholder = "What size and type of cylinder" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = 'airTemp' placeholder = "Air Temp" onChange={this.diveLogHandler}/>
+                                <Input type = 'text' name = "bottomTemp" placeholder = "Bottom Temp" onChange={this.diveLogHandler}/>
+                                </Row>
+                            </div>
+                            <div>
+                                <Row>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "wetSuit" onChange= {this.checkHandler}/>{' '}WetSuit
+                                        </Label>   
+                                    </div>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "drySuit" onChange= {this.checkHandler}/>{' '}DrySuit
+                                        </Label>   
+                                    </div>
+                                     <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "freshWaterDive" onChange= {this.checkHandler}/>{' '}Fresh Water Dive
+                                        </Label>   
+                                    </div>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "saltWaterDive" onChange= {this.checkHandler}/>{' '}Salt Water Dive
+                                        </Label>   
+                                    </div>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "boatDive" onChange= {this.checkHandler}/>{' '}Boat Dive
+                                        </Label>   
+                                    </div>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "shoreDive" onChange= {this.checkHandler}/>{' '}Shore Dive
+                                        </Label>   
+                                    </div>
+                                    <div>
+                                        <Label>
+                                            <Input type ='checkbox' name = "nightDive" onChange= {this.checkHandler}/>{' '}Night Dive
+                                        </Label>   
+                                    </div>
+                                </Row>
+                            </div>
+                            <div>
+                            <Input rows="5" type="textarea" name="text" id="postText" placeholder="Open space to write anything you want about your dive" onChange={this.diveLogHandler} />
+                            </div>
                         </FormGroup>
                         <button className="btn-danger btn" onClick={this.addNewDive}>Log Dive</button>
                     </form>
+                    </Container>
                 </div>
             )
         }
