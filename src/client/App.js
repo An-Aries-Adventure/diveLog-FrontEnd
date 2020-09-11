@@ -83,7 +83,7 @@ function App() {
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <LandingPage {...props} user={user} handleLogin={handleLogin} setCookieApp={setCookieApp} />} />
         <ProtectedRoute exact path='/Home' user={user} component={Home} handleLogout={handleLogout} />
-        <ProtectedRoute exact path='/NewDiveRecord' user={user} component={NewDiveRecord} handleLogout={handleLogout} />
+        <ProtectedRoute exact path='/NewDiveRecord' user={user} component={NewDiveRecord} />
         <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} handleLogout={handleLogout}/>
       </Router>
     </div>
