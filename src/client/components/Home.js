@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import Weather from './Weather'
 
 
 const Home = props => {
@@ -27,9 +28,12 @@ const Home = props => {
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
+           
+
             {/* <Post user={props.userInfo} /> */}
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}>
+            {/* <Weather/> */}
             {/* <ListFriends userInfo={props.userInfo} /> */}
             <hr />
             <div>

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import rootReducer from './reducers/rootReducer';
-import maps_API_KEY from "./configs/default.json"
+import map_API_KEY from "./configs/default.json"
 import {connect} from 'react-redux';
+import GetDives from './GetDives'
 
-
-
+//returns out diveData
+GetDives()
 
 
 function Map() {
@@ -15,7 +16,7 @@ function Map() {
         defaultZoom={3}
         defaultCenter ={{lat: 39, lng: 98}}
         >
-
+        
          {diveData.map(dive => (
              <Marker 
              key = {dive.diveNumber} 
@@ -41,7 +42,7 @@ function Map() {
             onCloseClick ={() => {
                 setSelectedDive(null)
             }}>
-                <div>{selectedDive.diveSite},{selectedDive.date}</div>
+                <div>{selectedDive.date},{selectedDive.diveSite}</div>
             </InfoWindow>
         )}
         </GoogleMap>
@@ -51,11 +52,11 @@ function Map() {
 const wrappedMap = withScriptjs(withGoogleMap(Map)) 
 
 
-export default function DiveMap() {
+function DiveMap() {
     return (
     
     <div style = {{width: "100vw", height: "100vh"}}>
-    <wrappedMap googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${maps_API_KEY}`}
+    <wrappedMap googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${map_API_KEY}`}
     loadingElement = {<div style = {{height: "100%"}}/>}
     containerElement = {<div style = {{height: "100%"}}/>}
     mapElement = {<div style = {{height: "100%"}}/>}
@@ -63,3 +64,21 @@ export default function DiveMap() {
     </div>
     )
 }
+
+
+
+const mapStateToProps = (state) => {
+    return{
+      diveNumber: state.diveNumber,
+      date: state.date,
+      diveSite: state.diveSite, 
+      city: state.city, 
+      country: state.country,
+      
+  
+    }
+      
+  }
+  
+
+export default connect(mapStateToProps) (DiveMap)
