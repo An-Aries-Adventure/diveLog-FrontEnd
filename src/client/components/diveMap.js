@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import rootReducer from './reducers/rootReducer';
-import maps_API_KEY from "./config/default.json"
+import maps_API_KEY from "./configs/default.json"
 import {connect} from 'react-redux';
 
 
