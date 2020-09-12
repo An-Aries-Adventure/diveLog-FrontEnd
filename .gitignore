@@ -3,4 +3,4 @@ node_modules
 dist
 *.log
 yarn.lock
-src/components/config/default.json
+src/client/components/config/default.json
