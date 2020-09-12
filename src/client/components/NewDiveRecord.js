@@ -2,51 +2,15 @@ import React from 'react';
 import Navigation from './Navigation';
 import axios from 'axios'
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
-
-export default class NewDiveRecord extends React.Component{
-    constructor(props){
-        super(props); 
-        this.state = {
-
-            userId: null,
-            diveNumber: null, 
-            date:  null,
-            diveSite: null, 
-            city: null, 
-            country: null, 
-            startingPressure: null, 
-            endingPressure: null,
-            visibility:  null,
-            timeIn: null, 
-            timeOut: null,
-            totalDiveMin:  null,
-            minAtDepth: null, 
-            airConsumption: null, 
-            maxDepth: null,
-            weight: null, 
-            cylinderSize: null, 
-            airTemp: null, 
-            bottomTemp: null, 
-            wetSuit: false,
-            drySuit: false,
-            freshWaterDive: false,
-            saltWaterDive: false,
-            boatDive: false,
-            shoreDive:  false,
-            nightDive: false,
-            comment: null,
-            verifier: null, 
-            scubaCert: null, 
-            instructor: false, 
-            diveMaster:  false,
-            buddy: false,  
-            safetyDepth: null, 
-            safetyMinutes: null  
+import {connect} from 'react-redux';
 
 
-        };
 
-    }
+
+
+
+class NewDiveRecord extends React.Component{
+  
         checkHandler = (e) => {
             this.setState({
                 [e.target.name]: true
@@ -64,39 +28,39 @@ export default class NewDiveRecord extends React.Component{
             axios.post('http://localhost:5000/api/diveRecord/', {
 
             userId: props.userInfo._id,
-            diveNumber: this.state.diveNumber,
-            date: this.state.date,
-            diveSite: this.state.diveSite, 
-            city: this.state.city, 
-            country: this.state.country,
-            startingPressure: this.state.startingPressure, 
-            endingPressure: this.state.endingPressure,
-            visibility:  this.state.visibility,
-            timeIn: this.state.timeIn, 
-            timeOut: this.state.timeOut,
-            totalDiveMin: this.state.totalDiveMin,
-            minAtDepth: this.state.minAtDepth, 
-            airConsumption: this.state.airConsumption, 
-            maxDepth: this.state.maxDepth,
-            weight: this.state.weight, 
-            cylinderSize: this.state.cylinderSize, 
-            airTemp: this.state.airTemp, 
-            bottomTemp: this.state.bottomTemp, 
-            wetSuit: this.state.wetSuit,
-            drySuit: this.state.drySuit,
-            freshWaterDive: this.state.freshWaterDive,
-            saltWaterDive: this.state.saltWaterDive,
-            boatDive: this.state.boatDive,
-            shoreDive:  this.state.shoreDive,
-            nightDive: this.state.nightDive,
-            comment: this.state.comment,
-            verifier: this.state.verifier, 
-            scubaCert: this.state.scubaCert, 
-            instructor: this.state.instructor, 
-            diveMaster:  this.state.diveMaster,
-            buddy: this.state.buddy,  
-            safetyDepth: this.state.safetyDepth, 
-            safetyMinutes: this.state.safetyMinutes  
+            diveNumber: this.props.diveNumber,
+            date: this.props.date,
+            diveSite: this.props.diveSite, 
+            city: this.props.city, 
+            country: this.props.country,
+            startingPressure: this.props.startingPressure, 
+            endingPressure: this.props.endingPressure,
+            visibility:  this.props.visibility,
+            timeIn: this.props.timeIn, 
+            timeOut: this.props.timeOut,
+            totalDiveMin: this.props.totalDiveMin,
+            minAtDepth: this.props.minAtDepth, 
+            airConsumption: this.props.airConsumption, 
+            maxDepth: this.props.maxDepth,
+            weight: this.props.weight, 
+            cylinderSize: this.props.cylinderSize, 
+            airTemp: this.props.airTemp, 
+            bottomTemp: this.props.bottomTemp, 
+            wetSuit: this.props.wetSuit,
+            drySuit: this.props.drySuit,
+            freshWaterDive: this.props.freshWaterDive,
+            saltWaterDive: this.props.saltWaterDive,
+            boatDive: this.props.boatDive,
+            shoreDive:  this.props.shoreDive,
+            nightDive: this.props.nightDive,
+            comment: this.props.comment,
+            verifier: this.props.verifier, 
+            scubaCert: this.props.scubaCert, 
+            instructor: this.props.instructor, 
+            diveMaster:  this.props.diveMaster,
+            buddy: this.props.buddy,  
+            safetyDepth: this.props.safetyDepth, 
+            safetyMinutes: this.props.safetyMinutes  
 
             }).then(res => {
                 alert("new dive log submitted")
@@ -202,3 +166,46 @@ export default class NewDiveRecord extends React.Component{
 
     
 }
+
+const mapStateToProps = (state) => {
+  return{
+    diveNumber: state.diveNumber,
+    date: state.date,
+    diveSite: state.diveSite, 
+    city: state.city, 
+    country: state.country,
+    startingPressure: state.startingPressure, 
+    endingPressure: state.endingPressure,
+    visibility:  state.visibility,
+    timeIn: state.timeIn, 
+    timeOut: state.timeOut,
+    totalDiveMin: state.totalDiveMin,
+    minAtDepth: state.minAtDepth, 
+    airConsumption: state.airConsumption, 
+    maxDepth: state.maxDepth,
+    weight: state.weight, 
+    cylinderSize: state.cylinderSize, 
+    airTemp: state.airTemp, 
+    bottomTemp: state.bottomTemp, 
+    wetSuit: state.wetSuit,
+    drySuit: state.drySuit,
+    freshWaterDive: state.freshWaterDive,
+    saltWaterDive: state.saltWaterDive,
+    boatDive: state.boatDive,
+    shoreDive:  state.shoreDive,
+    nightDive: state.nightDive,
+    comment: state.comment,
+    verifier: state.verifier, 
+    scubaCert: state.scubaCert, 
+    instructor: state.instructor, 
+    diveMaster:  state.diveMaster,
+    buddy: state.buddy,  
+    safetyDepth: state.safetyDepth, 
+    safetyMinutes: state.safetyMinutes 
+
+  }
+    
+}
+
+
+export default connect(mapStateToProps) (NewDiveRecord)
