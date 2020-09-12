@@ -21,16 +21,18 @@ class Leaderboard extends Component {
                 <Table striped bordered condensed hover className="leaderBoard">
                 <thead>
                     <tr>
-                        <th># of dives</th><th>firstName</th><th>lastName</th>
+                    <th>Place</th><th># of Dives</th><th>First Name</th><th>Last Name</th>
                     </tr>
                 </thead>
                 <tbody>
                    {diveData.map((row, index) => (
+                    //row.diveNumber.sort(function(a, b){return b - a});
                     <tr key = {row.userId}>
                     <td>{index + 1}</td>
+                    <td>{row.diveNumber}</td>
                     <td>{row.firstName}</td>
                     <td>{row.lastName}</td>
-                    <td>{row.diveNumber}</td>
+                    
                     </tr>
                    )
                    )}  
