@@ -4,17 +4,13 @@ import { Table } from 'reactstrap';
 
 
 class Leaderboard extends Component {
-    state = {
-        leaders: []
-    }
+ 
     //getdives returns out diveData
     componentDidMount(){
       GetDives()
     }
 
     render(){
-        const leaders = this.props
-
 
         return (
             <div>

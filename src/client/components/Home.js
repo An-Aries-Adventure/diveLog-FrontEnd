@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navigation from './Navigation';
 import Weather from './Weather'
+import DiveMap from './diveMap'
+import GetDives from './GetDives'
+import { Table } from 'reactstrap';
 
 
 const Home = props => {
+  console.log(props)
+  const [diveInfo, setDiveInfo] = useState([])
+useEffect(() => {
+  async function getData() {
+    const res = await GetDives();
+    setDiveInfo(res.data);
+  }
+  getData()
+  
+}, []);
   return (
     <>
       <Navigation user={props.userInfo} handleLogout={props.handleLogout} />
@@ -28,12 +41,34 @@ const Home = props => {
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
-           
+          <Table striped bordered condensed hover className="diveInfo">
+                <thead>
+                    <tr>
+                    <th>Dive #</th>
+                    <th>Date</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {diveInfo.map((row, index) => (
+                    //row.diveNumber.sort(function(a, b){return b - a});
+                    <tr key = {index}>
+                    <td>{row.diveNumber}</td>
+                    <td>{row.date}</td>
+                    <td>{row.city}</td>
+                    <td>{row.country}</td>
+                    
+                    </tr>
+                   )
+                   )}  
+                </tbody>
+                </Table>
 
             {/* <Post user={props.userInfo} /> */}
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}>
-            {/* <Weather/> */}
+            { <DiveMap/> }
             {/* <ListFriends userInfo={props.userInfo} /> */}
             <hr />
             <div>

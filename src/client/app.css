@@ -172,3 +172,105 @@ div>.post {
   background-color: rgb(103, 167, 252);
   border: rgb(3, 3, 80);
 }
+
+.search-box{
+ width: 100%;
+ margin: 0 0 75px;
+ font-family: 'montseratt', sans-serif;
+
+}
+
+.search-box .search-bar{
+  display: block;
+  width: 100%;
+  padding: 15px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+  box-shadow: 0px 5px rgba(0,0,0,0.2) ;
+
+  color: #313131;
+  font-size: 20px;
+  transition: 0.4s ease;
+}
+
+
+
+body {
+  font-family: 'montseratt', sans-serif;
+}
+
+.weatherApp{
+  background-image: url('https://thewallpaper.co//wp-content/uploads/2016/02/beautiful-ocean-hd-sea-wallpapers-sand-sun-fresh-air-amazing-beach-vacation-swimming-free-2406x1504.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease-out;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.weatherApp.warm{
+  background-image: url('https://c0.wallpaperflare.com/preview/327/357/108/blue-skys-tropical-palm-tree-summer.jpg');
+}
+
+main{
+  min-height: 30vh;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+  padding: 25px;
+}
+
+.location-box .location {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.location-box .date{
+color: #FFF;
+font-size: 20px;
+font-weight: 175;
+font-style: italic;
+text-align: center;
+text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.weather-box{
+  text-align: center;
+}
+
+
+.weather-box .temp{
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  background-color: rgba(255, 255,  255, 0.2);
+  border-radius: 16px;
+  padding: 15px 25px;
+  color: #FFF;
+  font-size: 100px;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-align: center;
+  box-shadow: 3px 6px rgba(0,0,0,0.2),;
+}
+
+.weather-box .weather{
+  color:#FFF;
+  font-size: 40px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.leaderBoard{
+  color: black
+}
+
+.diveInfo{
+  background-color: cadetblue;
+}

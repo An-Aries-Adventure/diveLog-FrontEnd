@@ -9,8 +9,8 @@ const Navigation = props => {
           <li className="nav-item">
             <a className="nav-link" href="/Home">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/NewDiveRecord">New Dive Record</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/NewDiveRecord">New Dive Record</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/ProfilePage">Profile</a>
