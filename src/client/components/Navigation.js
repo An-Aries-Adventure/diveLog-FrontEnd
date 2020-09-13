@@ -13,6 +13,9 @@ const Navigation = props => {
             <a className="nav-link" href="/NewDiveRecord">New Dive Record</a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" href="/DiveMap">Dive Map</a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="/ProfilePage">Profile</a>
           </li>
           <li className="nav-item">

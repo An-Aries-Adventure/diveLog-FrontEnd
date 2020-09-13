@@ -67,8 +67,7 @@ useEffect(() => {
 
             {/* <Post user={props.userInfo} /> */}
           </div>
-          <div className="col-lg-3" style={{ padding: "50px" }}>
-            { <DiveMap/> }
+          <div className="col-lg-3" style={{ padding: "50px" }}> 
             {/* <ListFriends userInfo={props.userInfo} /> */}
             <hr />
             <div>
