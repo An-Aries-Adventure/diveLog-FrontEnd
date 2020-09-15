@@ -4,19 +4,25 @@ import Weather from './Weather'
 import DiveMap from './diveMap'
 import GetDives from './GetDives'
 import { Table } from 'reactstrap';
+import Delete from './Delete'
+import Favorite from './Favorite'
+
 
 
 const Home = props => {
   console.log(props)
   const [diveInfo, setDiveInfo] = useState([])
-useEffect(() => {
-  async function getData() {
-    const res = await GetDives();
-    setDiveInfo(res.data);
-  }
-  getData()
-  
-}, []);
+
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+const getData = async function () {
+  const res = await GetDives();
+  setDiveInfo(res.data);
+console.log(res.data)
+}
   return (
     <>
       <Navigation user={props.userInfo} handleLogout={props.handleLogout} />
@@ -48,6 +54,8 @@ useEffect(() => {
                     <th>Date</th>
                     <th>City</th>
                     <th>Country</th>
+                    <th>Favorite</th>
+                    <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +66,8 @@ useEffect(() => {
                     <td>{row.date}</td>
                     <td>{row.city}</td>
                     <td>{row.country}</td>
-                    
+                    <td><Favorite/></td>
+                    <td><Delete getData = {getData} diveId = {row._id}/></td>
                     </tr>
                    )
                    )}  

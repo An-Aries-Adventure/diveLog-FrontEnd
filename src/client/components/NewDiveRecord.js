@@ -126,44 +126,21 @@ class NewDiveRecord extends React.Component {
                                     <div className="col-lg-2">
                                         <Input type='checkbox' name="freshWaterDive" onChange={this.checkHandler} />{' '}Fresh Water Dive
                                     </div>
+                                    <div className="col-lg-2">
+                                        <Input type='checkbox' name="saltWaterDive" onChange={this.checkHandler} />{' '}Salt Water Dive
+                                    </div>
+                                    <div className="col-lg-2">
+                                        <Input type='checkbox' name="boatDive" onChange={this.checkHandler} />{' '}Boat Dive
+                                    </div>
+                                    <div className="col-lg-2">
+                                        <Input type='checkbox' name="shoreDive" onChange={this.checkHandler} />{' '}Shore Dive
+                                    </div>
+                                    <div className="col-lg-2">
+                                        <Input type='checkbox' name="nightDive" onChange={this.checkHandler} />{' '}Night Dive
+                                    </div>
                                 </div>
-                                {/* <Row>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="wetSuit" onChange={this.checkHandler} />{' '}WetSuit
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="freshWaterDive" onChange={this.checkHandler} />{' '}Fresh Water Dive
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="saltWaterDive" onChange={this.checkHandler} />{' '}Salt Water Dive
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="boatDive" onChange={this.checkHandler} />{' '}Boat Dive
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="shoreDive" onChange={this.checkHandler} />{' '}Shore Dive
-                                        </Label>
-                                    </div>
-                                    <div>
-                                        <Label>
-                                            <Input type='checkbox' name="nightDive" onChange={this.checkHandler} />{' '}Night Dive
-                                        </Label>
-                                    </div>
-                                </Row> */}
                             </div>
+                            <br/>
                             <div>
                                 <Input rows="5" type="textarea" name="text" id="postText" placeholder="Open space to write anything you want about your dive" onChange={this.diveLogHandler} />
                             </div>
