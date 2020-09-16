@@ -2,6 +2,8 @@ import React from 'react';
 import Navigation from './Navigation';
 import axios from 'axios'
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import '../app.css'
+
 
 class NewDiveRecord extends React.Component {
 
@@ -10,11 +12,11 @@ class NewDiveRecord extends React.Component {
         console.log('NewDiveRecord props', props);
         this.state = {
             userId: props.userInfo._id,
-            diveNumber: "333",
-            date: "02/25/1975",
-            diveSite: "captains shelf",
-            city: "fort lauderdale",
-            country: "United States",
+            diveNumber: 0,
+            date: "",
+            diveSite: "",
+            city: "",
+            country: "",
             startingPressure: 0,
             endingPressure: 0,
             visibility: 0,
@@ -42,7 +44,8 @@ class NewDiveRecord extends React.Component {
             diveMaster: false,
             buddy: false,
             safetyDepth: 0,
-            safetyMinutes: 0
+            safetyMinutes: 0,
+            totalBottomTime: 0
         }
     }
 
@@ -75,20 +78,26 @@ class NewDiveRecord extends React.Component {
             <div>
                 <Navigation />
                 <Container>
+                    <div>
+                    {/* <DiveCard/> */}
+                    </div>
+                </Container>
+                <Container className ="diveForm">
                     <form id="diveForm" autoComplete="off">
                         <FormGroup>
                             <div>
-                                <Label>Create New Dive Record</Label>
+                                <Label clasName = "label">Create New Dive Record</Label>
                             </div>
+                            <Container className ="record">
                             <div>
                                 <Row>
-                                    <Input type='text' name="diveNumber" defaultValue={this.state.diveNumber} placeholder="Dive Number" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="date" defaultValue={this.state.date} placeholder="Date of the dive: mm/dd/yyyy" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="diveNumber" placeholder="Dive Number (*Required)" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="date" placeholder="Date of the dive: mm/dd/yyyy (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
                                 <Row>
-                                    <Input type='text' name="diveSite" defaultValue={this.state.diveSite} placeholder="Name of dive site" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="city" id='city' defaultValue={this.state.city} placeholder="City of Dive Location" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="country" id='country' defaultValue={this.state.country} placeholder="Country of Dive Location" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="diveSite"  placeholder="Name of dive site" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="city" id='city'  placeholder="City of Dive Location (*Required)" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="country" id='country' placeholder="Country of Dive Location (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
                             <div>
@@ -97,6 +106,7 @@ class NewDiveRecord extends React.Component {
                                     <Input type='text' name="timeOut" placeholder="Time you exited the water" onChange={this.diveLogHandler} />
                                     <Input type='text' name="totalDiveMin" placeholder="Dive time in minutes" onChange={this.diveLogHandler} />
                                     <Input type='text' name="minAtDepth" placeholder="Time at depth" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="totalBottomTime" placeholder="Total Bottom Time to Date (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
                             <div>
@@ -115,6 +125,7 @@ class NewDiveRecord extends React.Component {
                                     <Input type='text' name="bottomTemp" placeholder="Bottom Temp" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
+                            </Container>
                             <div>
                                 <div className="row">
                                     <div className="col-lg-2">
@@ -145,7 +156,27 @@ class NewDiveRecord extends React.Component {
                                 <Input rows="5" type="textarea" name="text" id="postText" placeholder="Open space to write anything you want about your dive" onChange={this.diveLogHandler} />
                             </div>
                         </FormGroup>
+                            <div>
+                                <Container className = "certBox">
+                                <div>
+                                <Input type='text' name="verifier" placeholder="Name of the Verifer for this dive" onChange={this.diveLogHandler} />
+                                </div>
+                                <div>
+                                <Input type='text' name="scubaCert" placeholder="Certification number of the verifier" onChange={this.diveLogHandler} />
+                                </div>
+                                <div className="col-lg-2">
+                                        <Input type='checkbox' name="buddy" onChange={this.checkHandler} />{' '}Buddy
+                                </div>
+                                <div className="col-lg-2">
+                                        <Input type='checkbox' name="diveMaster" onChange={this.checkHandler} />{' '}Dive Master
+                                </div>
+                                <div className="col-lg-2">
+                                        <Input type='checkbox' name="instructor" onChange={this.checkHandler} />{' '}Instructor
+                                </div>
+                                </Container>
+                            </div>
                         <button className="btn-danger btn" onClick={this.addNewDive}>Log Dive</button>
+
                     </form>
                 </Container>
             </div>

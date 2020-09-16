@@ -6,23 +6,42 @@ import GetDives from './GetDives'
 import { Table } from 'reactstrap';
 import Delete from './Delete'
 import Favorite from './Favorite'
+import DiveCard from './DiveCard'
 
 
 
 const Home = props => {
   console.log(props)
   const [diveInfo, setDiveInfo] = useState([])
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
     getData();
   }, []);
 
-const getData = async function () {
+  const getData = async function () {
   const res = await GetDives();
   setDiveInfo(res.data);
-console.log(res.data)
-}
+  setLoading(false);
+  console.log("result", res.data)
+  //row.diveNumber.sort(function(a, b){return b - a});
+  }
+
+
+  function checkForData(){
+    if(loading){
+     
+      return <div></div>
+    }
+    else{
+      console.log(diveInfo);
+      return  <DiveCard diveInfo = {diveInfo}/>
+    }
+
+    
+  }
+
   return (
     <>
       <Navigation user={props.userInfo} handleLogout={props.handleLogout} />
@@ -41,9 +60,11 @@ console.log(res.data)
                   <p className="card-text">{props.userInfo.lastName}</p>
                   <p className="card-text">{props.userInfo.email}</p>
                   <a href="/ProfilePage"><button className="btn-danger btn">View Profile</button></a>
-
                 </div>
               </div>
+            </div>
+            <div>
+             {checkForData()}
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
@@ -89,4 +110,4 @@ console.log(res.data)
   )
 };
 
-export default Home;
+export default Home
