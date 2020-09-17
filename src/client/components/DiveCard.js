@@ -9,7 +9,9 @@ class DiveCard extends Component {
 
         this.state = {
         total:  [],
-        loading: true           
+        loading: true,
+
+
         }
         console.log("Dive Card", props)
     };
@@ -19,22 +21,29 @@ class DiveCard extends Component {
         //console.log(data);
          this.setState({
             total: this.props.diveInfo,
-            loading: false
+            loading: false,
+        
         });
         console.log(this.props.diveInfo);
       console.log("total", this.state.total);
     };
 
+    diverLevel(){
+        if(this.state.total[this.state.total.length -1].diveNumber < 50){
+          return <h5>Dive Level: Sardine</h5>
+        }
+        else if(this.state.total[this.state.total.length -1].diveNumber >= 50 < 100){
+          return <h5>Dive Level: Starfish</h5>
+        }
+        else if(this.state.total[this.state.total.length -1].diveNumber >= 100 < 150){
+          return <h5>Dive Level: Trumpet Fish</h5>
+        }
+        else if(this.state.total[this.state.total.length -1].diveNumber >= 150 < 200){
+          return <h5>Dive Level: Stingray</h5>
+        }  
+    }
 
-    // totalDives() {
-    // this.props.getData().then((res) => {
-    //      console.log("total",res.data) 
-    //      return res.data;
-    // })
-    // .catch((error) => {
-    //     console.log(error)
-    // });
-    // };
+    
 
 
     render() {
@@ -43,6 +52,9 @@ class DiveCard extends Component {
         
             
             <Container>
+                <div>
+                    {this.diverLevel()}
+                </div>
                 <Container>
                      <div>
                          <h4>Total Dives to Date</h4>

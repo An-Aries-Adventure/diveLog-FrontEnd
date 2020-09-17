@@ -14,7 +14,7 @@ const Home = props => {
   console.log(props)
   const [diveInfo, setDiveInfo] = useState([])
   const [loading, setLoading] = useState(true);
-
+  
 
   useEffect(() => {
     getData();
@@ -38,9 +38,9 @@ const Home = props => {
       console.log(diveInfo);
       return  <DiveCard diveInfo = {diveInfo}/>
     }
-
     
   }
+
 
   return (
     <>

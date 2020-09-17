@@ -3,7 +3,7 @@ import Navigation from './Navigation';
 import axios from 'axios'
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import '../app.css'
-
+import DiveCard from './DiveCard'
 
 class NewDiveRecord extends React.Component {
 
@@ -77,16 +77,15 @@ class NewDiveRecord extends React.Component {
         return (
             <div>
                 <Navigation />
-                <Container>
-                    <div>
-                    {/* <DiveCard/> */}
+             
+                   <div className="sidenav">
+                    <DiveCard/>
                     </div>
-                </Container>
                 <Container className ="diveForm">
                     <form id="diveForm" autoComplete="off">
                         <FormGroup>
                             <div>
-                                <Label clasName = "label">Create New Dive Record</Label>
+                                <Label className = "label">Create New Dive Record</Label>
                             </div>
                             <Container className ="record">
                             <div>
