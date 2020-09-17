@@ -316,3 +316,14 @@ text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
   color: #2196F3;
   display: block;
 }
+
+.starYellow{
+  color: yellow
+}
+
+.starGreen{
+  color: green
+}
+.starBlue{
+  color: blue
+}
