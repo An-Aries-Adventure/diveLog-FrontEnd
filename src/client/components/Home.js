@@ -30,19 +30,6 @@ const Home = props => {
   }
 
 
-  // function checkForData(){
-  //   if(loading){
-     
-  //     return <div></div>
-  //   }
-  //   else{
-  //     console.log(diveInfo);
-  //     return  <DiveCard diveInfo = {diveInfo}/>
-  //   }
-    
-  // }
-
-
   return (
     <>
       <Navigation user={props.userInfo} handleLogout={props.handleLogout}/>
@@ -65,9 +52,11 @@ const Home = props => {
               </div>
             </div>
             <div>
-             {/* {checkForData()} */}
              <DiveCard/>
             </div>
+          </div>
+          <div>
+            <a href="/NewDiveRecord"><button className="btn-danger btn">Add New Dive</button></a>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
           <Table striped bordered condensed hover className="diveInfo">
@@ -98,10 +87,9 @@ const Home = props => {
                 </Table>
             
           </div>
-          <div className="col-lg-3" style={{ padding: "50px" }}> 
-            {/* {LeaderBoard()} */}
-            <div>
-             
+          <div className= 'weather' style={{ padding: "50px" }}> 
+            {Weather()}
+            <div>  
             </div>
           </div>
         </div>

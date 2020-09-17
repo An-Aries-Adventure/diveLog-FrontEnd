@@ -69,7 +69,7 @@ class NewDiveRecord extends React.Component {
 
         axios.post('http://localhost:5000/api/diveRecord/', this.state).then(res => {
             console.log('new dive add', res)
-           // alert("new dive log submitted")
+           alert("A New Dive Has Been Submitted")
         }, function (err) {
             alert('Something went wrong.')
         })
