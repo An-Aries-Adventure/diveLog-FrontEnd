@@ -7,6 +7,7 @@ import { Table } from 'reactstrap';
 import Delete from './Delete'
 import Favorite from './Favorite'
 import DiveCard from './DiveCard'
+import LeaderBoard from './LeaderBoard'
 
 
 
@@ -25,26 +26,26 @@ const Home = props => {
   setDiveInfo(res.data);
   setLoading(false);
   console.log("result", res.data)
-  //row.diveNumber.sort(function(a, b){return b - a});
+  
   }
 
 
-  function checkForData(){
-    if(loading){
+  // function checkForData(){
+  //   if(loading){
      
-      return <div></div>
-    }
-    else{
-      console.log(diveInfo);
-      return  <DiveCard diveInfo = {diveInfo}/>
-    }
+  //     return <div></div>
+  //   }
+  //   else{
+  //     console.log(diveInfo);
+  //     return  <DiveCard diveInfo = {diveInfo}/>
+  //   }
     
-  }
+  // }
 
 
   return (
     <>
-      <Navigation user={props.userInfo} handleLogout={props.handleLogout} />
+      <Navigation user={props.userInfo} handleLogout={props.handleLogout}/>
       <div className="container-fluid">
         <div className="row" style={{ paddingTop: "50px" }}>
           <div className="col-lg-3">
@@ -64,7 +65,8 @@ const Home = props => {
               </div>
             </div>
             <div>
-             {checkForData()}
+             {/* {checkForData()} */}
+             <DiveCard/>
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
@@ -94,14 +96,12 @@ const Home = props => {
                    )}  
                 </tbody>
                 </Table>
-
-            {/* <Post user={props.userInfo} /> */}
+            
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}> 
-            {/* <ListFriends userInfo={props.userInfo} /> */}
-            <hr />
+            {/* {LeaderBoard()} */}
             <div>
-              {/* <AnswerFriendRequest currentUserId={props.userInfo._id} /> */}
+             
             </div>
           </div>
         </div>

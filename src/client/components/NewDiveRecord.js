@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navigation from './Navigation';
 import axios from 'axios'
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import '../app.css'
 import DiveCard from './DiveCard'
+import GetDives from './GetDives'
+
 
 class NewDiveRecord extends React.Component {
 
@@ -45,10 +47,10 @@ class NewDiveRecord extends React.Component {
             buddy: false,
             safetyDepth: 0,
             safetyMinutes: 0,
-            totalBottomTime: 0
+            totalBottomTime: 0,
         }
     }
-
+  
     checkHandler = (e) => {
         this.setState({
             [e.target.name]: true
@@ -73,14 +75,14 @@ class NewDiveRecord extends React.Component {
         })
     };
 
+
     render() {
         return (
             <div>
                 <Navigation />
-             
-                   <div className="sidenav">
-                    <DiveCard/>
-                    </div>
+                   <div>
+                <DiveCard/>
+                   </div>
                 <Container className ="diveForm">
                     <form id="diveForm" autoComplete="off">
                         <FormGroup>
@@ -180,7 +182,7 @@ class NewDiveRecord extends React.Component {
                 </Container>
             </div>
         )
-    }
+    } 
 
 
 }

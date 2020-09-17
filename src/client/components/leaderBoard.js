@@ -1,18 +1,27 @@
-import React, { Component } from 'react'
-import GetDives from '../components/GetDives'
+import GetDives from './GetDives';
 import { Table } from 'reactstrap';
+import React, {useState} from 'react';
 
+const LeaderBoard = props => {
+    console.log(props)
 
-class Leaderboard extends Component {
- 
-    //getdives returns out diveData
-    componentDidMount(){
-      GetDives()
+    const [diveInfo, setDiveInfo] = useState([])
+
+    
+    useEffect(() => {
+      getData();
+    }, []);
+  
+    const getData = async function () {
+    const res = await GetDives();
+    setDiveInfo(res.data);
+    setLoading(false);
+    console.log("result", res.data)
+    
     }
+  
 
-    render(){
-
-        return (
+     return (
             <div>
                 <Table striped bordered condensed hover className="leaderBoard">
                 <thead>
@@ -21,14 +30,12 @@ class Leaderboard extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                   {diveData.map((row, index) => (
-                    //row.diveNumber.sort(function(a, b){return b - a});
+                   {diveInfo.map((row, index) => (
                     <tr key = {row.userId}>
                     <td>{index + 1}</td>
                     <td>{row.diveNumber}</td>
                     <td>{row.firstName}</td>
                     <td>{row.lastName}</td>
-                    
                     </tr>
                    )
                    )}  
@@ -37,20 +44,10 @@ class Leaderboard extends Component {
                 Leaderboard
             </div>
         )
-    }
-
-
-
-
-
-
-
-
-
 
 }
 
-export default Leaderboard
+export default LeaderBoard
 
 
 
