@@ -9,7 +9,7 @@ import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfilePage from './components/ProfilePage';
 import NewDiveRecord from './components/NewDiveRecord'
-import DiveMap from './components/diveMap'
+import DiveMap from './components/DiveMap'
 
 
 
@@ -84,7 +84,7 @@ function App() {
         <Route exact path='/' handleLogin={handleLogin} render={props => <LandingPage {...props} user={user} handleLogin={handleLogin} setCookieApp={setCookieApp} />} />
         <ProtectedRoute exact path='/Home' user={user} component={Home} handleLogout={handleLogout} />
         <ProtectedRoute exact path='/NewDiveRecord' user={user} component={NewDiveRecord} />
-        <ProtectedRoute exact path='/diveMap' user={user} component={DiveMap} />
+        <ProtectedRoute exact path='/DiveMap' user={user} component={DiveMap} />
         <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} handleLogout={handleLogout}/>
       </Router>
     </div>

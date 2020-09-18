@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation'
+import ProfilePic from './ProfilePic';
+import DiveCard from './DiveCard'
 
 
 function ProfilePage(props) {
 
-    let [responseData,
-        setResponseData] = useState('');
+    let [responseData,setResponseData] = useState('');
     const fetchData = useCallback(() => {
+    
 
 
         axios({
@@ -55,6 +57,10 @@ function ProfilePage(props) {
 
     }
 
+ 
+   
+    const [certification, setCertification] = useState("")
+
     return (
 
         <div>
@@ -64,7 +70,7 @@ function ProfilePage(props) {
 
                 <div className="row">
                     <div className="col-md-6 img">
-                        <img src={responseData.profileImage} alt="" className ="img-rounded" />
+                       <ProfilePic/>
                     </div>
                     <div className="col-md-6 details">
                         <blockquote>
@@ -72,17 +78,17 @@ function ProfilePage(props) {
                             <small><cite title="Source Title">Jacksonville, FL <i className="icon-map-marker"></i></cite></small>
                         </blockquote>
                         <p>
-                            Diver Certification Level <br />
-                                    Created Account on {responseData.timeStamp}
+                        <p>Level Of Certificaiton: </p>
+                        <input type="text" value = {certification} onChange = {(e) => setCertification(e.target.value)} placeholder = "Enter your Level of Certification"></input>
                         </p>
+                        
                         <hr />
-                        <p>Select Profile Image </p>
-                        <select className="select-board-size" onChange={setProfileImage}>
-                            {images.map(value => <option key={value} value={value}>{value}</option>)}
-                        </select>
+                        <DiveCard/>
+                        {/* <p>Select Profile Image </p>
+                        {/* <select className="select-board-size" onChange={setProfileImage}>
+                            {images.map(value => <option key={value} value={value}>{value}</option>)} */}
+                       
                         <br />
-                        Note! Some images in this application may still display the previous image. Log out and log back in to ensure all images are up to date.
-
                     </div>
                 </div>
             </div>

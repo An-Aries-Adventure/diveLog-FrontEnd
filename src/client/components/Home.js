@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Navigation from './Navigation';
 import Weather from './Weather'
-import DiveMap from './diveMap'
+import DiveMap from './DiveMap'
 import GetDives from './GetDives'
 import { Table } from 'reactstrap';
 import Delete from './Delete'
 import Favorite from './Favorite'
 import DiveCard from './DiveCard'
 import LeaderBoard from './LeaderBoard'
+import ProfilePic from './ProfilePic'
 
 
 
@@ -37,11 +38,12 @@ const Home = props => {
         <div className="row" style={{ paddingTop: "50px" }}>
           <div className="col-lg-3">
             <div className="text-center ">
-              <img src={'/src/client/components/images/dolphin.jpg'} alt="dolphin" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} />
+              {/* <img src={'/src/client/components/images/dolphin.jpg'} alt="dolphin" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} /> */}
+              
             </div>
             <div >
               <div className="text-center dark-red" style={{ width: "18rem", margin: "0 auto", paddingTop: "10px", marginBottom: "30px" }}>
-                <img className="card-img-top" src={props.userInfo.profileImage} alt="Card image cap" style={{ width: "80px" }} />
+                <ProfilePic/>
                 <div className="card-body">
                   <h5 className="card-title">Profile</h5>
                   <p className="card-text">{props.userInfo.firstName}</p>

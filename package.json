@@ -13,6 +13,7 @@
   "author": "Sandeep Raveesh",
   "license": "ISC",
   "dependencies": {
+    "antd": "^4.6.4",
     "axios": "^0.20.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.5.2",

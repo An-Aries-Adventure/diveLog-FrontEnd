@@ -13,14 +13,30 @@ const Weather = () =>{
     const [tempature, setTempature] = useState("");
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("");
+    const [wind, setWind] = useState("")
+    const [windDir, setWindDir] = useState("")
+    const [description, setDescription] = useState("")
+    const [clouds, setClouds] = useState("")
+    
+
+
+
 
     const getWeatherData = (city, country) => {
          Axios({
         method: "GET",
-        url: `http://api.openweathermap.org/data/2.5/weather?q="${city},${country}&appid=${weather_API_KEY}`     
+        url: `http://api.openweathermap.org/data/2.5/weather?q="${city},${country}&units=imperial&appid=${weather_API_KEY}`     
         })
         .then((response) => {
-            console.log("weather data", response.data);
+            console.log("weather data", response.data.main.temp);
+            setTempature(response.data.main.temp)
+            setWind(response.data.wind.speed)
+            setWind(response.data.wind.deg)
+            setDescription(respnse.data.weather.description)
+            setWind(response.data.clouds.all)
+         
+
+
         })
         .catch((error) => {
           console.log(error);
@@ -33,10 +49,15 @@ const Weather = () =>{
     return (
         <div className = "weather">
             <div className = "weatherCard">
+                {new Date().toLocaleString()}
                 <br/>
-                <h4>Current weather for:</h4>{city} 
+                {city} Weather
                <br/>
-               {/* {tempature} */}
+               {tempature} - {description}
+               <br/>
+               Wind Speed - {wind}, {windDir}
+               <br/>
+               {clouds}
             </div>
             <br/>
             <input type="text" value = {city} onChange = {(e) => setCity(e.target.value)} placeholder = "Enter a City"/>
