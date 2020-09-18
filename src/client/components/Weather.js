@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import "../components/configs/default.json"
+import config from "../components/configs/default.json"
 import "../../client/app.css"
 import Axios from 'axios';
-import weather_API_KEY from './configs/default.json'
+
 
 
 // const apiBase = "https://api.openweathermap.org/data/2.5";
@@ -20,20 +20,19 @@ const Weather = () =>{
     
 
 
-
-
     const getWeatherData = (city, country) => {
-         Axios({
+        const weather_KEY = config.weather_KEY;
+        Axios({
         method: "GET",
-        url: `http://api.openweathermap.org/data/2.5/weather?q="${city},${country}&units=imperial&appid=${weather_API_KEY}`     
+        url: `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=imperial&appid=${weather_KEY}`     
         })
-        .then((response) => {
-            console.log("weather data", response.data.main.temp);
-            setTempature(response.data.main.temp)
-            setWind(response.data.wind.speed)
-            setWind(response.data.wind.deg)
-            setDescription(respnse.data.weather.description)
-            setWind(response.data.clouds.all)
+        .then((res) => {
+            console.log("weather data", res.data);
+            setTempature(res.data.main.temp)
+            setWind(res.data.wind.speed)
+            setWindDir(res.data.wind.deg)
+            setDescription(res.data.weather.description)
+            setClouds(res.data.clouds.all)
          
 
 
@@ -60,9 +59,9 @@ const Weather = () =>{
                {clouds}
             </div>
             <br/>
-            <input type="text" value = {city} onChange = {(e) => setCity(e.target.value)} placeholder = "Enter a City"/>
+            <input type="text" name = 'city' onChange = {(e) => setCity(e.target.value)} placeholder = "Enter a City"/>
             <br/>
-            <input type="text" value = {country} onChange = {(e) => setCountry(e.target.value)} placeholder = "Enter a Country"/>
+            <input type="text" name = 'country' onChange = {(e) => setCountry(e.target.value)} placeholder = "Enter a Country"/>
             <br/>
             <button onClick ={() => getWeatherData(city, country)}>Get Weather</button>
         </div>
