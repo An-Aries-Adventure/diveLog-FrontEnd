@@ -3,7 +3,8 @@ import axios from 'axios';
 import Navigation from './Navigation'
 import ProfilePic from './ProfilePic';
 import DiveCard from './DiveCard'
-
+import LeaderBoard from './LeaderBoard'
+import { Card } from 'antd';
 
 function ProfilePage(props) {
 
@@ -72,6 +73,7 @@ function ProfilePage(props) {
                     <div className="col-md-6 img">
                        <ProfilePic/>
                     </div>
+                    <LeaderBoard/>
                     <div className="col-md-6 details">
                         <blockquote>
                             <h5>{responseData.firstName} {responseData.lastName}</h5>
@@ -83,7 +85,9 @@ function ProfilePage(props) {
                         </p>
                         
                         <hr />
+                        <Card style={{ width: 400}} className = "diveCard">
                         <DiveCard/>
+                         </Card>
                         {/* <p>Select Profile Image </p>
                         {/* <select className="select-board-size" onChange={setProfileImage}>
                             {images.map(value => <option key={value} value={value}>{value}</option>)} */}

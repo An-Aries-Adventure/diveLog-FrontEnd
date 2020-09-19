@@ -1,39 +1,55 @@
 import GetDives from './GetDives';
 import { Table } from 'reactstrap';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 
 const LeaderBoard = props => {
-    console.log(props)
+    console.log("props", props)
 
-    const [diveInfo, setDiveInfo] = useState([])
+    const [userInfo, setUserInfo] = useState([])
+    const [loading, setLoading] = useState(true);
 
     
     useEffect(() => {
-      getData();
+      getUsers();
     }, []);
   
-    const getData = async function () {
-    const res = await GetDives();
-    setDiveInfo(res.data);
-    setLoading(false);
-    console.log("result", res.data)
+    // const getData = async function () {
+    // const res = await getUsers();
+    // setUserInfo(res.data);
+    // setLoading(false);
+    // console.log("result", res.data)
+    // }
     
-    }
+
+    function getUsers() {
+         axios.get('http://localhost:5000/api/users/')
+         .then((res) => {
+            setUserInfo(res.data);
+            setLoading(false);
+            console.log("result", res.data)
+         })
+         .catch((error) => {
+             console.log(error)
+         })
+    };
+  
+    
   
 
      return (
             <div>
+                <h1 className = 'leadHead'>Leader Board</h1>
                 <Table striped bordered condensed hover className="leaderBoard">
                 <thead>
                     <tr>
-                    <th>Place</th><th># of Dives</th><th>First Name</th><th>Last Name</th>
+                    <th>Place</th><th>First Name</th><th>Last Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                   {diveInfo.map((row, index) => (
+                   {userInfo.map((row, index) => (
                     <tr key = {row.userId}>
                     <td>{index + 1}</td>
-                    <td>{row.diveNumber}</td>
                     <td>{row.firstName}</td>
                     <td>{row.lastName}</td>
                     </tr>
@@ -41,7 +57,6 @@ const LeaderBoard = props => {
                    )}  
                 </tbody>
                 </Table>
-                Leaderboard
             </div>
         )
 
