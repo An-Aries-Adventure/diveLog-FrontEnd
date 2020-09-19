@@ -1,48 +1,43 @@
 import React, {useState, Component} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
-import map_API_KEY from "./configs/default.json"
+import config from "./configs/default.json"
 import GetDives from './GetDives'
-
-
-class DiveMap extends Component{
-    constructor(props){
-        super(props)
-        state ={
-            allDives: [],
-        }
-    }
+import Navigation from './Navigation'
 
 
 
-    componentDidMount(){
-        this.getData();
-    }
-      
-   
-         
-       getData = async function(){
-           var res = await GetDives();
-               this.setState({
-                   allDives: res.data,
-        })
-       console.log('total dives', res.data)
-       };
-       
-
-       render() {
-         
-        return(
-            <div>
-                <h1>Map of dives</h1>
-
-            </div>
-
-        )};
-    
-
+function Map() {
+    return (
+        <div>
+            <GoogleMap defaultCenter ={{lat: 20.422983, lng: -86.922340}} defaultZoom = {2.75}/>
+        </div>
+    )
 }
 
-export default DiveMap
+
+const WrappedMap = withScriptjs(withGoogleMap(Map))
+
+
+ const API_KEY = config.API_KEY;
+
+
+function DiveMap() {
+    console.log(API_KEY)
+    return (
+    <div>
+        <div>
+            <Navigation/>
+        </div>
+        <div style = {{width: "100vw", height: "94vh"}}>
+            <WrappedMap googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${API_KEY}`}
+             loadingElement = {<div style = {{height: "100%"}}/>}
+             containerElement = {<div style = {{height: "100%"}}/>}
+             mapElement = {<div style = {{height: "100%"}}/>}
+            />
+        </div>
+    </div>
+    ) 
+}
 
 
 
@@ -51,16 +46,7 @@ export default DiveMap
 
 
 
-
-
-
-
-
-
-
-
-
-
+export default DiveMap;
 
 
 

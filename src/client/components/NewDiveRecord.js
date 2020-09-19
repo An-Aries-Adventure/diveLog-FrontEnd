@@ -5,7 +5,7 @@ import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap
 import '../app.css'
 import DiveCard from './DiveCard'
 import GetDives from './GetDives'
-
+import { Card } from 'antd';
 
 class NewDiveRecord extends React.Component {
 
@@ -81,7 +81,9 @@ class NewDiveRecord extends React.Component {
             <div>
                 <Navigation />
                    <div>
-                <DiveCard/>
+                   <Card style={{ width: 400}} className = "diveCard">
+                    <DiveCard/>
+                 </Card>
                    </div>
                 <Container className ="diveForm">
                     <form id="diveForm" autoComplete="off">
@@ -128,7 +130,7 @@ class NewDiveRecord extends React.Component {
                             </div>
                             </Container>
                             <div>
-                                <div className="row">
+                                <div className="checkBoxes">
                                     <div className="col-lg-2">
                                         <Input type='checkbox' name="wetSuit" onChange={this.checkHandler} />{' '}WetSuit
                                     </div>

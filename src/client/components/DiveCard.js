@@ -126,10 +126,10 @@ class DiveCard extends Component {
                     {this.diverLevel()}
                 </div>
                 <div>
-                    <h3>Total Dives to Date: {this.state.total[this.state.total.length -1].diveNumber}</h3>
+                    <h4>Total Dives to Date: {this.state.total[this.state.total.length -1].diveNumber}</h4>
                 </div>
                 <div>
-                    <h3>Total Minutes Underwater: {this.state.total[this.state.total.length -1].totalBottomTime}</h3>
+                    <h4>Total Minutes Underwater: {this.state.total[this.state.total.length -1].totalBottomTime}</h4>
                 </div>
             </Container>
           

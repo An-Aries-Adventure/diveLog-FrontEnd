@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import Navigation from './Navigation';
-import Weather from './Weather'
-import DiveMap from './DiveMap'
-import GetDives from './GetDives'
+import Weather from './Weather';
+import DiveMap from './DiveMap';
+import GetDives from './GetDives';
 import { Table } from 'reactstrap';
-import Delete from './Delete'
-import Favorite from './Favorite'
-import DiveCard from './DiveCard'
-import LeaderBoard from './LeaderBoard'
-import ProfilePic from './ProfilePic'
-
+import Delete from './Delete';
+import Favorite from './Favorite';
+import DiveCard from './DiveCard';
+import LeaderBoard from './LeaderBoard';
+import ProfilePic from './ProfilePic';
+import { Card } from 'antd';
 
 
 const Home = props => {
@@ -35,7 +35,11 @@ const Home = props => {
     <>
       <Navigation user={props.userInfo} handleLogout={props.handleLogout}/>
       <div className="container-fluid">
-        <div className="row" style={{ paddingTop: "50px" }}>
+        <br/>
+        <div className ="addDiveButton">
+             <a href="/NewDiveRecord"><button className="enjoy-css">Add New Dive</button></a>
+        </div>
+        <div className="row" style={{ paddingTop: "50px"}}>
           <div className="col-lg-3">
             <div className="text-center ">
               {/* <img src={'/src/client/components/images/dolphin.jpg'} alt="dolphin" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} /> */}
@@ -54,14 +58,13 @@ const Home = props => {
               </div>
             </div>
             <div>
-             <DiveCard/>
+            <Card style={{ width: 400}} className = "diveCard">
+            <DiveCard/>
+             </Card>
             </div>
           </div>
-          <div>
-            <a href="/NewDiveRecord"><button className="btn-danger btn">Add New Dive</button></a>
-          </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
-          <Table striped bordered condensed hover className="diveInfo">
+            <Table striped bordered condensed hover className="diveInfo">
                 <thead>
                     <tr>
                     <th>Dive #</th>
@@ -86,8 +89,7 @@ const Home = props => {
                    )
                    )}  
                 </tbody>
-                </Table>
-            
+              </Table>
           </div>
           <div className= 'weather' style={{ padding: "50px" }}> 
             {Weather()}
