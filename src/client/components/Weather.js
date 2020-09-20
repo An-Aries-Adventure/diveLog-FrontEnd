@@ -50,13 +50,17 @@ const Weather = () =>{
             <div className = "weatherCard">
                 {new Date().toLocaleString()}
                 <br/>
-                {city} Weather
+                <br/>
+                Weather for: {city}, {country}
+                <br/>
                <br/>
-               {tempature} - {description}
+               {tempature} Degrees Fahrenheit
                <br/>
-               Wind Speed - {wind}, {windDir}
                <br/>
-               {clouds}
+               Wind Speed: {wind} 
+               <br/>
+               <br/>
+               Clouds: {clouds}%
             </div>
             <br/>
             <input type="text" name = 'city' onChange = {(e) => setCity(e.target.value)} placeholder = "Enter a City"/>

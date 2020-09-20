@@ -7,7 +7,7 @@ import Navigation from './Navigation'
 
 
 
-// GeoCode API https://maps.googleapis.com/maps/api/geocode/JSON?address=${city}+${country} 
+// GeoCode API https://maps.googleapis.com/maps/api/geocode/JSON?address=${diveInfo.city}+${diveInfo.country} 
 
 
 // const [diveInfo, setDiveInfo] = useState([])

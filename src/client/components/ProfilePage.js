@@ -67,39 +67,42 @@ function ProfilePage(props) {
         <div>
             <Navigation handleLogout={props.handleLogout}/>
             <h2 className="text-center text-white">Profile Page</h2>
-            <div className="container dark-red1" style={{ marginTop: "50px" }}>
-
-                <div className="row">
-                    <div className="col-md-6 img">
-                       <ProfilePic/>
-                    </div>
-                    <LeaderBoard/>
-                    <div className="col-md-6 details">
-                        <blockquote>
-                            <h5>{responseData.firstName} {responseData.lastName}</h5>
-                            <small><cite title="Source Title">Jacksonville, FL <i className="icon-map-marker"></i></cite></small>
-                        </blockquote>
-                        <p>
-                        <p>Level Of Certificaiton: </p>
-                        <input type="text" value = {certification} onChange = {(e) => setCertification(e.target.value)} placeholder = "Enter your Level of Certification"></input>
-                        </p>
-                        
-                        <hr />
-                        <Card style={{ width: 400}} className = "diveCard">
-                        <DiveCard/>
-                         </Card>
-                        {/* <p>Select Profile Image </p>
-                        {/* <select className="select-board-size" onChange={setProfileImage}>
-                            {images.map(value => <option key={value} value={value}>{value}</option>)} */}
-                       
-                        <br />
+                <div className="container dark-red1" style={{ marginTop: "50px" }}>
+                    <div className="row">
+                        <div className="col-md-6 img">
+                            <ProfilePic/>
+                        </div>
+                            <blockquote>
+                                <h3 className = "profileName">{responseData.firstName} {responseData.lastName}</h3>
+                                <medium><cite title="Source Title">Jacksonville, FL <i className="icon-map-marker"></i></cite></medium>
+                                <p>
+                                <p>Level Of Certificaiton: Advanced Open Water Certified</p>
+                                <p>Endorsments: Nitrox </p>
+                                </p>
+                            </blockquote>
+                    <div/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div className = "profileBoard">
+                            <br/>
+                            <div>
+                                <LeaderBoard/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div>
+                                <Card style={{ width: 400}} className = "diveCard">
+                                    <DiveCard/>
+                                </Card>      
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
+        </div>            
 
     )
 }
 
 export default ProfilePage
+

@@ -49,7 +49,7 @@ const Home = props => {
               <div className="text-center dark-red" style={{ width: "18rem", margin: "0 auto", paddingTop: "10px", marginBottom: "30px" }}>
                 <ProfilePic/>
                 <div className="card-body">
-                  <h5 className="card-title">Profile</h5>
+                 
                   <p className="card-text">{props.userInfo.firstName}</p>
                   <p className="card-text">{props.userInfo.lastName}</p>
                   <p className="card-text">{props.userInfo.email}</p>
@@ -58,7 +58,7 @@ const Home = props => {
               </div>
             </div>
             <div>
-            <Card style={{ width: 400}} className = "diveCard">
+            <Card className = "diveCard">
             <DiveCard/>
              </Card>
             </div>
@@ -91,7 +91,7 @@ const Home = props => {
                 </tbody>
               </Table>
           </div>
-          <div className= 'weather' style={{ padding: "50px" }}> 
+          <div className= 'weather' style={{ padding: "20px" }}> 
             {Weather()}
             <div>  
             </div>

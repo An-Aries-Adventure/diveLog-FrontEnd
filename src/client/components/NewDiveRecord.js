@@ -107,7 +107,7 @@ class NewDiveRecord extends React.Component {
                                 <Row>
                                     <Input type='text' name="timeIn" placeholder="Time entered the water" onChange={this.diveLogHandler} />
                                     <Input type='text' name="timeOut" placeholder="Time you exited the water" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="totalDiveMin" placeholder="Dive time in minutes" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="totalDiveMin" placeholder="Dive time in minutes for this dive" onChange={this.diveLogHandler} />
                                     <Input type='text' name="minAtDepth" placeholder="Time at depth" onChange={this.diveLogHandler} />
                                     <Input type='text' name="totalBottomTime" placeholder="Total Bottom Time to Date (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
