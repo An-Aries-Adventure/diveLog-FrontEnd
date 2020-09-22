@@ -7,11 +7,14 @@ const LeaderBoard = props => {
     console.log("props", props)
 
     const [userInfo, setUserInfo] = useState([])
+    const [diveInfo, setDiveInfo] = useState([])
     const [loading, setLoading] = useState(true);
 
     
     useEffect(() => {
-      getUsers();
+        getAllUsers(),
+        getAllDives();
+      
     }, []);
   
     // const getData = async function () {
@@ -22,18 +25,36 @@ const LeaderBoard = props => {
     // }
     
 
-    function getUsers() {
+    function getAllDives() {
          axios.get('http://localhost:5000/api/diveRecord/')
          .then((res) => {
-            setUserInfo(res.data);
+            setDiveInfo(res.data);
             setLoading(false);
-            console.log("result", res.data)
          })
          .catch((error) => {
              console.log(error)
          })
     };
+    
+
+
+    function getAllUsers() {
+        axios.get('http://localhost:5000/api/users/')
+        .then((res) => {
+           setUserInfo(res.data);
+           setLoading(false);
+
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+   };
   
+   
+
+  const combinedTotal = [...userInfo, ...diveInfo]
+  console.log('combined', combinedTotal)
+
     // axios.get(`http://localhost:5000/api/diveRecord/diveRecord/${userInfo[i]._id}`)
   
 
@@ -43,14 +64,15 @@ const LeaderBoard = props => {
                 <Table striped bordered condensed hover className="leaderBoard">
                 <thead>
                     <tr>
-                    <th>Place</th><th>First Name</th><th>Last Name</th>
+                    <th>Divers</th><th>First Name</th><th>Last Name</th><th>Dive#</th>
                     </tr>
                 </thead>
                 <tbody>
-                   {userInfo.map((row, index) => (
+                   {combinedTotal.map((row, index) => (
                     <tr key = {row._id}>
                     <td>{index + 1}</td>
-                    <td>{row.userId}</td>
+                    <td>{row.firstName}</td>
+                    <td>{row.lastName}</td>
                     <td>{row.diveNumber}</td>
                     </tr>
                    )

@@ -75,10 +75,10 @@ function ProfilePage(props) {
                             <blockquote>
                                 <h3 className = "profileName">{responseData.firstName} {responseData.lastName}</h3>
                                 <medium><cite title="Source Title">Jacksonville, FL <i className="icon-map-marker"></i></cite></medium>
-                                <p>
+                                <br/>
                                 <p>Level Of Certificaiton: Advanced Open Water Certified</p>
                                 <p>Endorsments: Nitrox </p>
-                                </p>
+                                <br/>
                             </blockquote>
                     <div/>
                         <br/>

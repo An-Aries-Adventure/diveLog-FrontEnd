@@ -41,7 +41,7 @@ function DiveMap(props) {
         //     for (let i = 0; i < diveInfo.length; i++){
         //     axios.get(`https://maps.googleapis.com/maps/api/geocode/JSON?address=${diveInfo[i].city}+${diveInfo[i].country}&key=${API_KEY}`)
         //     .then((res) => {
-        //        setCordInfo(res.data);
+        //        setCordInfo().append(res.data);
         //        setLoading(false);
         //        console.log("CordResult", res.data)
         //     })
@@ -64,7 +64,7 @@ function DiveMap(props) {
         return (
             <div>
                 <GoogleMap defaultCenter ={{lat: 19.5985, lng: -155.5185}} defaultZoom = {2.75}>
-                {/* {diveInfo.map((dive) =>( */}
+                {/* {cordInfo.map((dive) =>( */}
                     <Marker position ={{lat: 7.95, lng: 98.33}} />
                     <Marker position ={{lat: 20.4443, lng: -86.9025}} />
                     <Marker position ={{lat: 9.8849, lng: -84.2272}} />
