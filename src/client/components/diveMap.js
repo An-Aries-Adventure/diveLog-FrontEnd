@@ -60,13 +60,24 @@ function DiveMap(props) {
 
 
     function Map() {
+        
         return (
             <div>
-                <GoogleMap defaultCenter ={{lat: 20.422983, lng: -86.922340}} defaultZoom = {2.75}>
+                <GoogleMap defaultCenter ={{lat: 19.5985, lng: -155.5185}} defaultZoom = {2.75}>
+                {/* {diveInfo.map((dive) =>( */}
+                    <Marker position ={{lat: 7.95, lng: 98.33}} />
+                    <Marker position ={{lat: 20.4443, lng: -86.9025}} />
+                    <Marker position ={{lat: 9.8849, lng: -84.2272}} />
+
+
+                    {/* // key = {dive._id}  */}
+                    
+
+                  {/* ))} */}
                 
-            
-            
-                </GoogleMap>
+                    </GoogleMap> 
+          
+    
             </div>
         )
     }
