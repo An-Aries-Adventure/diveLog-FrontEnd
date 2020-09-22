@@ -15,15 +15,19 @@ class ProfilePic extends Component{
         super(props)
         this.state = {
 
-            profileImage: ''
+            profileImage: props.user.profileImage
 
         }
     }
 
     handleImageChange = (profileImage) => {
+        console.log('handleImageChange profileImage', profileImage)
         this.setState({
             profileImage
         })
+
+        //TODO:
+        //axios call to update profile image path.
     }
 
 

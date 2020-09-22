@@ -23,7 +23,7 @@ const LeaderBoard = props => {
     
 
     function getUsers() {
-         axios.get('http://localhost:5000/api/users/')
+         axios.get('http://localhost:5000/api/diveRecord/')
          .then((res) => {
             setUserInfo(res.data);
             setLoading(false);
@@ -34,7 +34,7 @@ const LeaderBoard = props => {
          })
     };
   
-    
+    // axios.get(`http://localhost:5000/api/diveRecord/diveRecord/${userInfo[i]._id}`)
   
 
      return (
@@ -48,10 +48,10 @@ const LeaderBoard = props => {
                 </thead>
                 <tbody>
                    {userInfo.map((row, index) => (
-                    <tr key = {row.userId}>
+                    <tr key = {row._id}>
                     <td>{index + 1}</td>
-                    <td>{row.firstName}</td>
-                    <td>{row.lastName}</td>
+                    <td>{row.userId}</td>
+                    <td>{row.diveNumber}</td>
                     </tr>
                    )
                    )}  

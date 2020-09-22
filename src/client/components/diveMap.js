@@ -1,55 +1,78 @@
-import React, {useState, Component} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import config from "./configs/default.json"
 import GetDives from './GetDives'
 import Navigation from './Navigation'
-
+import DiveCard from './DiveCard'
+import axios from 'axios'
 
 
 
 // GeoCode API https://maps.googleapis.com/maps/api/geocode/JSON?address=${diveInfo.city}+${diveInfo.country} 
 
 
-// const [diveInfo, setDiveInfo] = useState([])
-// const [loading, setLoading] = useState(true);
-
-
-// useEffect(() => {
-//   getData();
-// }, []);
-
-// const getData = async function () {
-// const res = await GetDives();
-// setDiveInfo(res.data);
-// setLoading(false);
-// console.log("result", res.data)
-// }
-
-
-
-
-function Map() {
-
-    return (
-        <div>
-            <GoogleMap defaultCenter ={{lat: 20.422983, lng: -86.922340}} defaultZoom = {2.75}>
-        
-        
-        
-            </GoogleMap>
-        </div>
-    )
-}
-
-
-const WrappedMap = withScriptjs(withGoogleMap(Map))
-
 
  const API_KEY = config.API_KEY;
 
 
-function DiveMap() {
-    console.log(API_KEY)
+function DiveMap(props) {
+
+        const [diveInfo, setDiveInfo] = useState([])
+        const [loading, setLoading] = useState(true);
+        const [cordInfo, setCordInfo] = useState([]) 
+      
+        useEffect(() => {
+          getData();
+          
+        }, []);
+      
+        const getData = async function () {
+        const res = await GetDives(props.userInfo._id);
+        setDiveInfo(res.data);
+        setLoading(false);
+        console.log("result", res.data);
+    
+        };
+        console.log("diveInfo", diveInfo);
+
+
+        // function getCords(diveInfo) {
+        //     console.log("function", diveInfo)
+        //     for (let i = 0; i < diveInfo.length; i++){
+        //     axios.get(`https://maps.googleapis.com/maps/api/geocode/JSON?address=${diveInfo[i].city}+${diveInfo[i].country}&key=${API_KEY}`)
+        //     .then((res) => {
+        //        setCordInfo(res.data);
+        //        setLoading(false);
+        //        console.log("CordResult", res.data)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
+        //     }
+         
+        // };
+
+
+
+        
+
+
+
+
+    function Map() {
+        return (
+            <div>
+                <GoogleMap defaultCenter ={{lat: 20.422983, lng: -86.922340}} defaultZoom = {2.75}>
+                
+            
+            
+                </GoogleMap>
+            </div>
+        )
+    }
+
+    const WrappedMap = withScriptjs(withGoogleMap(Map))
+
     return (
     <div>
         <div>

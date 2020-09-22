@@ -82,7 +82,7 @@ class NewDiveRecord extends React.Component {
                 <Navigation />
                    <div>
                    <Card style={{ width: 400}} className = "diveCard">
-                    <DiveCard/>
+                    <DiveCard user={this.props.userInfo}/>
                  </Card>
                    </div>
                 <Container className ="diveForm">

@@ -13,7 +13,7 @@ import { Card } from 'antd';
 
 
 const Home = props => {
-  console.log(props)
+  console.log('home', props)
   const [diveInfo, setDiveInfo] = useState([])
   const [loading, setLoading] = useState(true);
   
@@ -23,7 +23,7 @@ const Home = props => {
   }, []);
 
   const getData = async function () {
-  const res = await GetDives();
+  const res = await GetDives(props.userInfo._id);
   setDiveInfo(res.data);
   setLoading(false);
   console.log("result", res.data)
@@ -47,7 +47,7 @@ const Home = props => {
             </div>
             <div >
               <div className="text-center dark-red" style={{ width: "18rem", margin: "0 auto", paddingTop: "10px", marginBottom: "30px" }}>
-                <ProfilePic/>
+                <ProfilePic user={props.userInfo}/>
                 <div className="card-body">
                  
                   <p className="card-text">{props.userInfo.firstName}</p>
@@ -59,7 +59,7 @@ const Home = props => {
             </div>
             <div>
             <Card className = "diveCard">
-            <DiveCard/>
+            <DiveCard user={props.userInfo}/>
              </Card>
             </div>
           </div>

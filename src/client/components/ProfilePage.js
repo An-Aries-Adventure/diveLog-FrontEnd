@@ -70,7 +70,7 @@ function ProfilePage(props) {
                 <div className="container dark-red1" style={{ marginTop: "50px" }}>
                     <div className="row">
                         <div className="col-md-6 img">
-                            <ProfilePic/>
+                            <ProfilePic user={props.userInfo}/>
                         </div>
                             <blockquote>
                                 <h3 className = "profileName">{responseData.firstName} {responseData.lastName}</h3>
@@ -93,7 +93,7 @@ function ProfilePage(props) {
                             <br/>
                             <div>
                                 <Card style={{ width: 400}} className = "diveCard">
-                                    <DiveCard/>
+                                    <DiveCard user={props.userInfo}/>
                                 </Card>      
                             </div>
                         </div>
