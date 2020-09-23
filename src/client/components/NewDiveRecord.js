@@ -7,6 +7,7 @@ import DiveCard from './DiveCard'
 import GetDives from './GetDives'
 import { Card } from 'antd';
 
+
 class NewDiveRecord extends React.Component {
 
     constructor(props) {
@@ -48,6 +49,7 @@ class NewDiveRecord extends React.Component {
             safetyDepth: 0,
             safetyMinutes: 0,
             totalBottomTime: 0,
+            email: ""
         }
     }
   
@@ -75,6 +77,29 @@ class NewDiveRecord extends React.Component {
         })
     };
 
+
+    handleEmailSubmit (event) {
+        const templateId = template_vyp8l1v
+    
+        this.sendFeedback(templateId, { from_name: this.props.userInfo.firstName, reply_to: this.state.email})
+      }
+    
+      sendFeedback (templateId, variables) {
+        window.emailjs.send(
+          'Hotmail', templateId,
+          variables
+          ).then(res => {
+            console.log('Email successfully sent!')
+          })
+          // Handle errors here however you like, or use a React error boundary
+          .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+      }
+
+
+
+
+
+    // template_vyp8l1v
 
     render() {
         return (
@@ -166,6 +191,9 @@ class NewDiveRecord extends React.Component {
                                 </div>
                                 <div>
                                 <Input type='text' name="scubaCert" placeholder="Certification number of the verifier" onChange={this.diveLogHandler} />
+                                </div>
+                                <div>
+                                <Input type='text' name="email" placeholder="Email of verifier" onChange={this.diveLogHandler} />
                                 </div>
                                 <div className="col-lg-2">
                                         <Input type='checkbox' name="buddy" onChange={this.checkHandler} />{' '}Buddy
