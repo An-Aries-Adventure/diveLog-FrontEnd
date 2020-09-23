@@ -53,6 +53,14 @@ function DiveMap(props) {
         return (
             <div>
                 <GoogleMap defaultCenter ={{lat: 19.5985, lng: -155.5185}} defaultZoom = {2.75}>
+                    {cordInfo.map((dive, index) => (
+                        <Marker key ={index}
+                        position ={{
+                            lat: dive.results[0].geometry.location.lat,
+                            lng: dive.results[0].geometry.location.lng
+                        }}>
+                        </Marker>
+                    ))}
             
                 </GoogleMap> 
           

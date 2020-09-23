@@ -48,8 +48,8 @@ class NewDiveRecord extends React.Component {
             buddy: false,
             safetyDepth: 0,
             safetyMinutes: 0,
-            totalBottomTime: 0,
-            email: ""
+            totalBottomTime: 0
+            
         }
     }
   
@@ -68,7 +68,6 @@ class NewDiveRecord extends React.Component {
     addNewDive = (e) => {
         e.preventDefault();
         console.log('this.state', this.state)
-
         axios.post('http://localhost:5000/api/diveRecord/', this.state).then(res => {
             console.log('new dive add', res)
            alert("A New Dive Has Been Submitted")
@@ -78,28 +77,6 @@ class NewDiveRecord extends React.Component {
     };
 
 
-    handleEmailSubmit (event) {
-        const templateId = template_vyp8l1v
-    
-        this.sendFeedback(templateId, { from_name: this.props.userInfo.firstName, reply_to: this.state.email})
-      }
-    
-      sendFeedback (templateId, variables) {
-        window.emailjs.send(
-          'Hotmail', templateId,
-          variables
-          ).then(res => {
-            console.log('Email successfully sent!')
-          })
-          // Handle errors here however you like, or use a React error boundary
-          .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
-      }
-
-
-
-
-
-    // template_vyp8l1v
 
     render() {
         return (
@@ -191,9 +168,6 @@ class NewDiveRecord extends React.Component {
                                 </div>
                                 <div>
                                 <Input type='text' name="scubaCert" placeholder="Certification number of the verifier" onChange={this.diveLogHandler} />
-                                </div>
-                                <div>
-                                <Input type='text' name="email" placeholder="Email of verifier" onChange={this.diveLogHandler} />
                                 </div>
                                 <div className="col-lg-2">
                                         <Input type='checkbox' name="buddy" onChange={this.checkHandler} />{' '}Buddy
