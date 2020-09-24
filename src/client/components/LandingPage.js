@@ -11,6 +11,9 @@ const LandingPage = props => {
 
   return (
     <div>
+      <div className = "diveImage">
+
+      </div>
       <br/>
       <br/>
       <div>

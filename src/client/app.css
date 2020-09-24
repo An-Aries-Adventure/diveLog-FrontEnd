@@ -422,3 +422,12 @@ margin-right: auto;
 }
 
 
+.diveImage{
+
+    width:705px; /*width of your image*/
+    height:435px; /*height of your image*/
+    background-image:url('../client/components/assets/Capture.jpg');
+    float: right;
+    margin-right: 10px;
+    margin-top: 20px;
+ }
