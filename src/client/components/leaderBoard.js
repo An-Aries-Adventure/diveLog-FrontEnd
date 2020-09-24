@@ -17,13 +17,41 @@ const LeaderBoard = props => {
       
     }, []);
   
-    // const getData = async function () {
-    // const res = await getUsers();
-    // setUserInfo(res.data);
-    // setLoading(false);
-    // console.log("result", res.data)
-    // }
+   
+    function combinePeople(){
+        return(
+        userInfo.map((user, index) => (
+      
+                    <tr key = {user._id}>
+                    <td>{index + 1}</td>
+                    <td>{user.firstName}</td>
+                    <td>{user.LastName}</td>
+                    </tr>
+         ) )
+        )      
+    }               
     
+  
+    function combineDives(){
+        return(
+        diveInfo.map((dive, index) => (
+      
+                    <tr key = {dive._id}>
+                    <td>{dive.diveNumber}</td>
+                    </tr>
+         ) )
+        )      
+    }               
+    
+  
+
+
+
+
+
+
+
+
 
     function getAllDives() {
          axios.get('http://localhost:5000/api/diveRecord/')
@@ -68,12 +96,12 @@ const LeaderBoard = props => {
                     </tr>
                 </thead>
                 <tbody>
-                   {combinedTotal.map((row, index) => (
+                   {userInfo.map((row, index) => (
                     <tr key = {row._id}>
                     <td>{index + 1}</td>
                     <td>{row.firstName}</td>
                     <td>{row.lastName}</td>
-                    <td>{row.diveNumber}</td>
+
                     </tr>
                    )
                    )}  

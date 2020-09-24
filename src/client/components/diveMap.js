@@ -29,8 +29,8 @@ function DiveMap(props) {
         async function getData() {
             const res = await GetDives(props.userInfo._id);
             //setDiveInfo(res.data);
-            console.log('THIS IS THE DIVE INFO BEFORE LOIOP', res.data);
-            setLoading(false);
+            console.log('THIS IS THE DIVE INFO BEFORE LOOP', res.data);
+            
             for(let i = 0; i < res.data.length; i++){
                 await getCords(res.data[i]);
             }
@@ -44,24 +44,30 @@ function DiveMap(props) {
             let res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${diveInfo.city}+us&key=${API_KEY}`);
             let newCordInfo = cordInfo;
             newCordInfo.push(res.data);
-            setCordInfo(newCordInfo);       
+            setCordInfo(newCordInfo);
+            setLoading(false)       
         };
 
+
+        function marker(){
+            for (let i = 0; i < cordInfo.length; i++){
+                return(
+                    <Marker position ={{
+                        lat: cordInfo[i].results[0].geometry.location.lat,
+                        lng: cordInfo[i].results[0].geometry.location.lng
+                    }}>
+                    </Marker>
+                )
+            }
+        }
 
     function Map() {
         
         return (
+            loading ? <div>Getting Data</div> :
             <div>
-                <GoogleMap defaultCenter ={{lat: 19.5985, lng: -155.5185}} defaultZoom = {2.75}>
-                    {cordInfo.map((dive, index) => (
-                        <Marker key ={index}
-                        position ={{
-                            lat: dive.results[0].geometry.location.lat,
-                            lng: dive.results[0].geometry.location.lng
-                        }}>
-                        </Marker>
-                    ))}
-            
+                <GoogleMap defaultCenter ={{lat: 19.8968, lng: -155.5825}} defaultZoom = {2.9}>
+                {marker()}
                 </GoogleMap> 
           
     
@@ -72,6 +78,7 @@ function DiveMap(props) {
     const WrappedMap = withScriptjs(withGoogleMap(Map))
 
     return (
+       
     <div>
         <div>
             <Navigation/>

@@ -30,6 +30,48 @@ const Home = props => {
   
   }
 
+  async function diveTable() {
+  const { diveArray } = await diveInfo
+  let sortedDiveArray = [...diveArray]
+  sortedDiveArray.sort((a, b) => {
+    if (a.date < b.date){
+      return -1;
+    }
+    if (a.date > b.date) {
+      return 1;
+    }
+    return 0;
+  });
+   return (
+    <Table striped bordered condensed hover className="diveInfo">
+    <thead>
+        <tr>
+        <th>Dive #</th>
+        <th>Date</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Favorite</th>
+        <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+       {diveInfo.map((row, index) => (
+        //row.date.sort(function(a, b){return b - a});
+        <tr key = {index}>
+        <td>{row.diveNumber}</td>
+        <td>{row.date}</td>
+        <td>{row.city}</td>
+        <td>{row.country}</td>
+        <td><Favorite/></td>
+        <td><Delete getData = {getData} diveId = {row._id}/></td>
+        </tr>
+       )
+       )}  
+    </tbody>
+  </Table>
+   )
+  }
+
 
   return (
     <>
@@ -64,6 +106,7 @@ const Home = props => {
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
+            
             <Table striped bordered condensed hover className="diveInfo">
                 <thead>
                     <tr>
@@ -77,7 +120,7 @@ const Home = props => {
                 </thead>
                 <tbody>
                    {diveInfo.map((row, index) => (
-                    //row.diveNumber.sort(function(a, b){return b - a});
+                    //row.date.sort(function(a, b){return b - a});
                     <tr key = {index}>
                     <td>{row.diveNumber}</td>
                     <td>{row.date}</td>

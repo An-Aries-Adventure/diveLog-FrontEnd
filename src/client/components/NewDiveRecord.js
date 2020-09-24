@@ -180,7 +180,7 @@ class NewDiveRecord extends React.Component {
                                 </div>
                                 </Container>
                             </div>
-                        <button className="btn-danger btn" onClick={this.addNewDive}>Log Dive</button>
+                       <button className="btn-danger btn" onClick={this.addNewDive}>Log Dive</button>
 
                     </form>
                 </Container>

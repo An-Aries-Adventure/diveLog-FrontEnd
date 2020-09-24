@@ -39,7 +39,7 @@ class DiveCard extends Component {
         } else {
             return <div>
                 <h3>Dive Level: None</h3>
-                <FaStar className='starYellow' size={20} />
+                
             </div>
         }
 
