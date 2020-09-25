@@ -52,13 +52,24 @@ function DiveMap(props) {
         function marker(){
             for (let i = 0; i < cordInfo.length; i++){
                 return(
-                    <Marker position ={{
+                    <Marker key = {i} position ={{
                         lat: cordInfo[i].results[0].geometry.location.lat,
                         lng: cordInfo[i].results[0].geometry.location.lng
                     }}>
                     </Marker>
                 )
             }
+        }
+
+        function mapMarker(){
+            cordInfo.map((diveSite, index) => (
+                    <Marker position ={{
+                        lat: diveSite.results[0].geometry.location.lat,
+                        lng: diveSite.results[0].geometry.location.lng
+                    }}>
+                    </Marker>
+                )
+            )
         }
 
     function Map() {
