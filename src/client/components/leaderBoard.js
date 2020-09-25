@@ -9,50 +9,88 @@ const LeaderBoard = props => {
     const [userInfo, setUserInfo] = useState([])
     const [diveInfo, setDiveInfo] = useState([])
     const [loading, setLoading] = useState(true);
-
-    
+    const [counter, setCounter] = useState(0)
+ 
+  
     useEffect(() => {
         getAllUsers(),
         getAllDives();
       
     }, []);
-  
-   
-    function combinePeople(){
-        return(
-        userInfo.map((user, index) => (
-      
-                    <tr key = {user._id}>
-                    <td>{index + 1}</td>
-                    <td>{user.firstName}</td>
-                    <td>{user.LastName}</td>
-                    </tr>
-         ) )
-        )      
-    }               
+    console.log("diveInfo", diveInfo)
+    console.log("userInfo", userInfo)
+
+
+
+
+
+
+
+    function generateBoard(diveInfo, userInfo){
+        let leaderBoardInfo = [];
+        
+        userInfo.map((user) => {
+        let diveCount = diveInfo.filter((dive) => {
+        return user._id == dive.userId;
+    }).length;
+        leaderBoardInfo.push({
+        number: leaderBoardInfo.length + 1,
+        user: user,
+        diveCount: diveCount,
     
-  
-    function combineDives(){
-        return(
-        diveInfo.map((dive, index) => (
-      
-                    <tr key = {dive._id}>
-                    <td>{dive.diveNumber}</td>
-                    </tr>
-         ) )
-        )      
-    }               
+    });
+    });
+    console.log('LEADER INFO', leaderBoardInfo);
+    return(
+        <Table>
+        <thead style = {{color: "white"}}>
+            <tr>
+           <th>First Name</th><th>Last Name</th><th>Dive Count</th>
+            </tr>
+        </thead>
+        <tbody style = {{color: "white"}}>
+            {leaderBoardInfo.map((boardInfo, index) => (
+                <tr key = {index}>
+                
+                <td>{boardInfo.user.firstName}</td>
+                <td>{boardInfo.user.lastName}</td>
+                <td>{boardInfo.diveCount}</td>
+                </tr>
+            ))}
+        </tbody>
+        </Table>
+    );  
+    }
+
+
+//     <Table striped bordered condensed hover className="diveInfo">
+//     <thead>
+//         <tr>
+//         <th>Dive #</th>
+//         <th>Date</th>
+//         <th>City</th>
+//         <th>Country</th>
+//         <th>Favorite</th>
+//         <th>Delete</th>
+//         </tr>
+//     </thead>
+//     <tbody>
+//        {diveInfo.map((row, index) => (
+//         //row.date.sort(function(a, b){return b - a});
+//         <tr key = {index}>
+//         <td>{row.diveNumber}</td>
+//         <td>{row.date}</td>
+//         <td>{row.city}</td>
+//         <td>{row.country}</td>
+//         <td><Favorite/></td>
+//         <td><Delete getData = {getData} diveId = {row._id}/></td>
+//         </tr>
+//        )
+//        )}  
+//     </tbody>
+//   </Table>
+
     
-  
-
-
-
-
-
-
-
-
-
     function getAllDives() {
          axios.get('http://localhost:5000/api/diveRecord/')
          .then((res) => {
@@ -70,7 +108,7 @@ const LeaderBoard = props => {
         axios.get('http://localhost:5000/api/users/')
         .then((res) => {
            setUserInfo(res.data);
-           setLoading(false);
+          
 
         })
         .catch((error) => {
@@ -78,18 +116,17 @@ const LeaderBoard = props => {
         })
    };
   
-   
-
-  const combinedTotal = [...userInfo, ...diveInfo]
-  console.log('combined', combinedTotal)
-
-    // axios.get(`http://localhost:5000/api/diveRecord/diveRecord/${userInfo[i]._id}`)
+ 
   
 
      return (
             <div>
                 <h1 className = 'leadHead'>Leader Board</h1>
-                <Table striped bordered condensed hover className="leaderBoard">
+                <div>
+                   {diveInfo.length > 0 ? generateBoard(diveInfo, userInfo) : 'NO DIVES'}
+                </div>
+               
+                {/* <Table striped bordered condensed hover className="leaderBoard">
                 <thead>
                     <tr>
                     <th>Divers</th><th>First Name</th><th>Last Name</th><th>Dive#</th>
@@ -106,28 +143,11 @@ const LeaderBoard = props => {
                    )
                    )}  
                 </tbody>
-                </Table>
+                </Table> */}
             </div>
         )
 
 }
 
 export default LeaderBoard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
