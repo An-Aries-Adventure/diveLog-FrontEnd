@@ -293,7 +293,8 @@ text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 
 .diveInfo{
   background-color: rgb(83, 111, 145);
-  color: whitesmoke
+  color: whitesmoke;
+  font-size: 20px;
 }
 
 .favorite{
