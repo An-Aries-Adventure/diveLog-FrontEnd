@@ -82,12 +82,13 @@ class NewDiveRecord extends React.Component {
         return (
             <div>
                 <Navigation />
-                   <div>
-                   <Card style={{ width: 400}} className = "diveCard">
-                    <DiveCard user={this.props.userInfo}/>
+                   <div className = "col-md-2">
+                   <Card className = "diveCard">
+                    <DiveCard  user={this.props.userInfo} />
                  </Card>
                    </div>
                 <Container className ="diveForm">
+
                     <form id="diveForm" autoComplete="off">
                         <FormGroup>
                             <div>
