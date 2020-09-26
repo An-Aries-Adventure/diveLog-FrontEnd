@@ -91,43 +91,49 @@ class NewDiveRecord extends React.Component {
                     <form id="diveForm" autoComplete="off">
                         <FormGroup>
                             <div>
-                                <Label className = "label">Create New Dive Record</Label>
+                                <h2 style = {{color: "white", marginLeft: "365px"}}>Create New Dive Record</h2>
                             </div>
                             <Container className ="record">
-                            <div>
+                            <div className ="input">
                                 <Row>
                                     <Input type='text' name="diveNumber" placeholder="Dive Number (*Required)" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="date" placeholder="Date of the dive: mm/dd/yyyy (*Required)" onChange={this.diveLogHandler} />
+                                </Row>  
+                                <Row>  
+                                    <Input type='text' name="date" placeholder="Date of dive: mm/dd/yyyy (*Required)" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="diveSite"  placeholder="Name of dive site" onChange={this.diveLogHandler} />
                                 </Row>
                                 <Row>
-                                    <Input type='text' name="diveSite"  placeholder="Name of dive site" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="city" id='city'  placeholder="City of Dive Location (*Required)" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="country" id='country' placeholder="Country of Dive Location (*Required)" onChange={this.diveLogHandler} />
+                                
+                                    <Input type='text' name="city" id='city'  placeholder="City of Dive (*Required)" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="country" id='country' placeholder="Country of Dive (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
-                            </div>
-                            <div>
+                            </div >
+                            <div className ="input">
                                 <Row>
-                                    <Input type='text' name="timeIn" placeholder="Time entered the water" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="timeOut" placeholder="Time you exited the water" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="totalDiveMin" placeholder="Dive time in minutes for this dive" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="timeIn" placeholder="Time of entry" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="timeOut" placeholder="Time of exit" onChange={this.diveLogHandler} />
+                        
+                                </Row>
+                                <Row>
                                     <Input type='text' name="minAtDepth" placeholder="Time at depth" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="totalBottomTime" placeholder="Total Bottom Time to Date (*Required)" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="totalDiveMin" placeholder="Dive time for this dive" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="totalBottomTime" placeholder="Total Bottom Time (*Required)" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
-                            <div>
+                            <div className ="input">
                                 <Row>
                                     <Input type='text' name="startingPressure" placeholder="Staring pressure in PSI" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="endingPressure" placeholder="Ending Presure in PSI" onChange={this.diveLogHandler} />
-                                    <Input type='text' name='airConsumption' placeholder="Air Consuption" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="maxDepth" placeholder="Max Depth of this Dive" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="endingPressure" placeholder="Ending Presure in PSI" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name='airConsumption' placeholder="Air Consuption" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="maxDepth" placeholder="Max Depth of this Dive" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
-                            <div>
+                            <div className ="input">
                                 <Row>
-                                    <Input type='text' name="weight" placeholder="How much weight did you use in lbs" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="cylinderSize" placeholder="What size and type of cylinder" onChange={this.diveLogHandler} />
-                                    <Input type='text' name='airTemp' placeholder="Air Temp" onChange={this.diveLogHandler} />
-                                    <Input type='text' name="bottomTemp" placeholder="Bottom Temp" onChange={this.diveLogHandler} />
+                                    <Input type='text' name="weight" placeholder="Weight lbs" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="cylinderSize" placeholder="What size/type of cylinder" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name='airTemp' placeholder="Air Temp" onChange={this.diveLogHandler} />
+                                    <Input className ="input" type='text' name="bottomTemp" placeholder="Bottom Temp" onChange={this.diveLogHandler} />
                                 </Row>
                             </div>
                             </Container>

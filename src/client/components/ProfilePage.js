@@ -66,6 +66,7 @@ function ProfilePage(props) {
 
         <div>
             <Navigation handleLogout={props.handleLogout}/>
+            <br/>
             <h2 className="text-center text-white">Profile Page</h2>
                 <div className="container dark-red1" style={{ marginTop: "50px" }}>
                     <div className="row">
