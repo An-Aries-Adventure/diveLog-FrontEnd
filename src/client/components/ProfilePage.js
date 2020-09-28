@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
 import ProfilePic from './ProfilePic';
-import DiveCard from './DiveCard'
-import LeaderBoard from './LeaderBoard'
+import DiveCard from './DiveCard';
+import LeaderBoard from './LeaderBoard';
 import { Card } from 'antd';
 
 function ProfilePage(props) {
@@ -17,16 +17,16 @@ function ProfilePage(props) {
             "method": "GET",
             "url": "http://localhost:5000/api/users/" + props.userInfo._id
         }).then((response) => {
-            setResponseData(response.data)
-            console.log(response.data)
+            setResponseData(response.data);
+            console.log(response.data);
         }).catch((error) => {
-            console.log(error)
+            console.log(error);
         })
-    }, [])
+    }, []);
 
     useEffect(() => {
         fetchData()
-    }, [fetchData])
+    }, [fetchData]);
 
     const rootImagePath = "src/client/components/images";
     const images = [
@@ -49,14 +49,14 @@ function ProfilePage(props) {
             "profileImage": event.target.value
         })
             .then(res => {
-                setResponseData(res.data)
+                setResponseData(res.data);
 
             }, function (err) {
 
-                console.log(err)
-            })
+                console.log(err);
+            });
 
-    }
+    };
 
  
    
@@ -102,8 +102,8 @@ function ProfilePage(props) {
                 </div>
         </div>            
 
-    )
-}
+    );
+};
 
-export default ProfilePage
+export default ProfilePage;
 

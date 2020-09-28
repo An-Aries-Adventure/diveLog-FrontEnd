@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import '../app.css'
+import React, { Component } from "react";
+import '../app.css';
 
 class Favorite extends Component {
     state = {
@@ -28,4 +28,4 @@ class Favorite extends Component {
   
 
 };
-export default Favorite 
+export default Favorite;

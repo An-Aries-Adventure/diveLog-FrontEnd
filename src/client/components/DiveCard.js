@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import '../app.css'
+import React, { Component } from "react";
+import '../app.css';
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
-import GetDives from './GetDives'
-import { FaStar } from 'react-icons/fa'
+import GetDives from './GetDives';
+import { FaStar } from 'react-icons/fa';
 
 class DiveCard extends Component {
     constructor(props) {
@@ -11,12 +11,12 @@ class DiveCard extends Component {
         this.state = {
             total: [],
             loading: true,
-        }
+        };
     };
 
     componentDidMount() {
         this.getData();
-    }
+    };
 
 
 
@@ -25,13 +25,13 @@ class DiveCard extends Component {
         this.setState({
             total: res.data,
             loading: false
-        })
-        console.log('DiveCard:', res.data)
+        });
+        console.log('DiveCard:', res.data);
     };
 
 
     diverLevel() {
-        console.log('test', this.state.total)
+        console.log('test', this.state.total);
 
         let x = 0;
         if (this.state.total.length > 0) {
@@ -41,7 +41,7 @@ class DiveCard extends Component {
                 <h3>Dive Level: None</h3>
                 
             </div>
-        }
+        };
 
 
         if (x < 50) {
@@ -121,19 +121,16 @@ class DiveCard extends Component {
                     return <FaStar className='starYellow' size={20} />
                 })}
             </div>
-        }
-
-
-
-    }
+        };
+    };
 
     getTotalMinsUnderWater = () => {
         if(this.state.total.length > 0) {
             return this.state.total[this.state.total.length - 1].totalBottomTime
         }else {
             return 0
-        }
-    }
+        };
+    };
 
 
     render() {
@@ -153,13 +150,9 @@ class DiveCard extends Component {
                         <h4>Total Minutes Underwater: {this.getTotalMinsUnderWater()}</h4>
                     </div>
                 </Container>
-
-        )
-
+        );
     };
-
-
 };
 
 
-export default DiveCard
+export default DiveCard;

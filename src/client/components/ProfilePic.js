@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css'
-import '../app.css'
-import ProfilePicChanger from './ProfilePicChanger'
-import arizona from '../components/assets/arizona.jpg'
-import zoom from '../components/assets/zoom.jpg'
-import tired from '../components/assets/tired.jpg'
-import underwater from '../components/assets/underwater.jpg'
+import 'antd/dist/antd.css';
+import '../app.css';
+import ProfilePicChanger from './ProfilePicChanger';
+import arizona from '../components/assets/arizona.jpg';
+import zoom from '../components/assets/zoom.jpg';
+import tired from '../components/assets/tired.jpg';
+import underwater from '../components/assets/underwater.jpg';
 
 class ProfilePic extends Component{
 
@@ -17,18 +17,16 @@ class ProfilePic extends Component{
 
             profileImage: props.user.profileImage
 
-        }
-    }
+        };
+    };
 
     handleImageChange = (profileImage) => {
         console.log('handleImageChange profileImage', profileImage)
         this.setState({
             profileImage
-        })
+        });
 
-        //TODO:
-        //axios call to update profile image path.
-    }
+    };
 
 
     render(){
@@ -44,9 +42,9 @@ class ProfilePic extends Component{
             </div>
 
 
-        )
-    }
+        );
+    };
 
-}
+};
 
-export default ProfilePic
+export default ProfilePic;

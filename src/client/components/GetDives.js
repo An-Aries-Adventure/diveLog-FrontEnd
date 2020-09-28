@@ -1,6 +1,6 @@
 
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
 
 const GetDives = async currentUserId => {
@@ -9,8 +9,8 @@ const GetDives = async currentUserId => {
             return response;
         })
         .catch((error) => {
-            console.log(error)
-        })
+            console.log(error);
+        });
 };
 
-export default GetDives
+export default GetDives;

@@ -8,10 +8,7 @@ export default class LoginForm extends React.Component{
             email: "",
             password: ""
         };
-        
-            //this.handleSubmit = this.handleSubmit.bind(this);
-            //this.handleChange = this.handleChange.bind(this);
-        }
+        };
 
         handleChange(event){
             console.log('change event', event.target.name);
@@ -22,7 +19,7 @@ export default class LoginForm extends React.Component{
         handleSubmit(event){
            
             event.preventDefault();
-            const {email, password} = this.state
+            const {email, password} = this.state;
             console.log("state", this.state);
             axios.post('http://localhost:5000/api/auth/',
                 {
@@ -31,7 +28,7 @@ export default class LoginForm extends React.Component{
                         
                 }
 
-            ) 
+            )
             .then(response => {
                 console.log(response);
                 this.props.setCookieApp(response.data.token);
@@ -46,7 +43,7 @@ export default class LoginForm extends React.Component{
 
             });
 
-        }
+        };
 
     render() {
         return (
@@ -72,8 +69,8 @@ export default class LoginForm extends React.Component{
                 </form>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
-}
+};
 

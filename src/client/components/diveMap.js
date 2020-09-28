@@ -1,14 +1,13 @@
 import React, {useState, useEffect, Component} from 'react';
-import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
-import config from "./configs/default.json"
-import GetDives from './GetDives'
-import Navigation from './Navigation'
-import DiveCard from './DiveCard'
-import axios from 'axios'
+import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps';
+import config from "./configs/default.json";
+import GetDives from './GetDives';
+import Navigation from './Navigation';
+import DiveCard from './DiveCard';
+import axios from 'axios';
 
 
 
-// GeoCode API https://maps.googleapis.com/maps/api/geocode/JSON?address=${diveInfo.city}+${diveInfo.country} 
 
 
 
@@ -17,9 +16,9 @@ import axios from 'axios'
 
 function DiveMap(props) {
 
-        //const [diveInfo, setDiveInfo] = useState([])
+       
         const [loading, setLoading] = useState(true);
-        const [cordInfo, setCordInfo] = useState([]) 
+        const [cordInfo, setCordInfo] = useState([]); 
       
         useEffect(() => {
           getData();
@@ -28,15 +27,15 @@ function DiveMap(props) {
       
         async function getData() {
             const res = await GetDives(props.userInfo._id);
-            //setDiveInfo(res.data);
+            
             console.log('THIS IS THE DIVE INFO BEFORE LOOP', res.data);
             
             for(let i = 0; i < res.data.length; i++){
                 await getCords(res.data[i]);
-            }
+            };
 
             console.log("CORD INFO AFTER LOOP", cordInfo);
-        }
+        };
     
 
         async function getCords(diveInfo) {
@@ -45,7 +44,7 @@ function DiveMap(props) {
             let newCordInfo = cordInfo;
             newCordInfo.push(res.data);
             setCordInfo(newCordInfo);
-            setLoading(false)       
+            setLoading(false);       
         };
 
 
@@ -57,9 +56,9 @@ function DiveMap(props) {
                         lng: cordInfo[i].results[0].geometry.location.lng
                     }}>
                     </Marker>
-                )
-            }
-        }
+                );
+            };
+        };
 
         function mapMarker(){
             cordInfo.map((diveSite, index) => (
@@ -68,9 +67,8 @@ function DiveMap(props) {
                         lng: diveSite.results[0].geometry.location.lng
                     }}>
                     </Marker>
-                )
-            )
-        }
+                ));
+        };
 
     function Map() {
         
@@ -84,9 +82,9 @@ function DiveMap(props) {
     
             </div>
         );
-    }
+    };
 
-    const WrappedMap = withScriptjs(withGoogleMap(Map))
+    const WrappedMap = withScriptjs(withGoogleMap(Map));
 
     return (
        
@@ -103,7 +101,7 @@ function DiveMap(props) {
         </div>
     </div>
     ); 
-}
+};
 
 
 

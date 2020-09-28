@@ -13,8 +13,8 @@ import { Card } from 'antd';
 
 
 const Home = props => {
-  console.log('home', props)
-  const [diveInfo, setDiveInfo] = useState([])
+  console.log('home', props);
+  const [diveInfo, setDiveInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   
 
@@ -28,11 +28,11 @@ const Home = props => {
   setLoading(false);
   console.log("result", res.data)
   
-  }
+  };
 
   async function diveTable() {
   const { diveArray } = await diveInfo
-  let sortedDiveArray = [...diveArray]
+  let sortedDiveArray = [...diveArray];
   sortedDiveArray.sort((a, b) => {
     if (a.date < b.date){
       return -1;
@@ -69,8 +69,8 @@ const Home = props => {
        )}  
     </tbody>
   </Table>
-   )
-  }
+   );
+  };
 
 
   return (
@@ -83,9 +83,7 @@ const Home = props => {
         </div>
         <div className="row" style={{ paddingTop: "50px"}}>
           <div className="col-lg-3">
-            <div className="text-center ">
-              {/* <img src={'/src/client/components/images/dolphin.jpg'} alt="dolphin" className="dark-red mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 rounded" style={{ width: "230px" }} /> */}
-              
+            <div className="text-center "> 
             </div>
             <div >
               <div className="text-center dark-red" style={{ width: "18rem", margin: "0 auto", paddingTop: "10px", marginBottom: "30px" }}>
@@ -142,7 +140,7 @@ const Home = props => {
         </div>
       </div>
     </>
-  )
+  );
 };
 
-export default Home
+export default Home;

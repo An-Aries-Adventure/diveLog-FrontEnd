@@ -15,7 +15,7 @@ export default class RegistrationForm extends Component {
         
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleChange = this.handleChange.bind(this);
-        }
+        };
 
         handleChange(event){
             this.setState({
@@ -24,7 +24,7 @@ export default class RegistrationForm extends Component {
         }
         handleSubmit(event){
             event.preventDefault();
-            const {email, password, firstName, lastName} = this.state
+            const {email, password, firstName, lastName} = this.state;
 
             axios.post(`http://localhost:5000/api/users/`,
                 {
@@ -48,7 +48,7 @@ export default class RegistrationForm extends Component {
 
             });
 
-        }
+        };
 
     render() {
         return (
@@ -78,7 +78,7 @@ export default class RegistrationForm extends Component {
                     </div>
                 </form>
             </div>
-        )
-    }
+        );
+    };
 
-}
+};

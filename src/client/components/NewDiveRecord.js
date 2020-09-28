@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Navigation from './Navigation';
-import axios from 'axios'
+import axios from 'axios';
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
-import '../app.css'
-import DiveCard from './DiveCard'
-import GetDives from './GetDives'
+import '../app.css';
+import DiveCard from './DiveCard';
+import GetDives from './GetDives';
 import { Card } from 'antd';
 
 
@@ -50,20 +50,20 @@ class NewDiveRecord extends React.Component {
             safetyMinutes: 0,
             totalBottomTime: 0
             
-        }
-    }
+        };
+    };
   
     checkHandler = (e) => {
         this.setState({
             [e.target.name]: true
-        })
-    }
+        });
+    };
 
     diveLogHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     addNewDive = (e) => {
         e.preventDefault();
@@ -73,7 +73,7 @@ class NewDiveRecord extends React.Component {
            alert("A New Dive Has Been Submitted")
         }, function (err) {
             alert('Something went wrong.')
-        })
+        });
     };
 
 
@@ -192,10 +192,10 @@ class NewDiveRecord extends React.Component {
                     </form>
                 </Container>
             </div>
-        )
-    } 
+        );
+    };
 
 
-}
+};
 
 export default NewDiveRecord;

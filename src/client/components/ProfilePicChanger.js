@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css'
-import '../app.css'
+import 'antd/dist/antd.css';
+import '../app.css';
 import { Modal, Button } from 'antd';
 
 
@@ -12,7 +12,7 @@ class ProfilePicChanger extends Component{
         visible: false, 
         imagesArray: [props.zoom, props.arizona,props.underwater,props.tired]
     };
-    }
+    };
     
 
     showModal = () => {
@@ -46,9 +46,9 @@ class ProfilePicChanger extends Component{
                 <img src={image}  key = {index} onClick = {() => this.props.handleImageChange(image)}
                 height = "100px"
                 />
-            )
+            );
 
-        })
+        });
            
         return(
             <div>
@@ -63,9 +63,9 @@ class ProfilePicChanger extends Component{
         </Modal>
             </div>
 
-        )
-    }
+        );
+    };
 
-}
+};
 
-export default ProfilePicChanger
+export default ProfilePicChanger;
